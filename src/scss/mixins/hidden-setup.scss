@@ -1,0 +1,4 @@
+$class-type: unquote(".");
+@mixin hidden-setup($namespace: "") {
+  #{$class-type}hidden#{$namespace} { display: none !important; }
+}

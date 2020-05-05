@@ -1,0 +1,27 @@
+$mobileSiteWidth: 481px;
+
+.__wrapper {
+  @include clearfix();
+
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: content-box;
+
+  max-width: 100%;
+
+  // Nested wrapper are useless
+  // In case of nested wrapper forget padding
+  .wrapper { padding: 0; } 
+}
+
+.wrapper {
+  @extend .__wrapper;
+
+  max-width: $mobileSiteWidth;
+  @include medium() { max-width: $siteWidth; }
+}
+
+.wrapper-regular {
+  @extend .__wrapper;
+  @include medium() { max-width: $siteWidth; }
+}

@@ -1,0 +1,12 @@
+@mixin create-grid ($children: div,$width: 100%) {
+
+	@include clearfix();
+	
+	width: calc(#{$width} + #{$gutter});
+	margin-left: -$gutter;
+
+	#{$children} {
+		padding-left: $gutter;
+		display: block;
+	}
+}

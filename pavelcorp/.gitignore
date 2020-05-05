@@ -1,0 +1,18 @@
+.DS_Store
+
+# Assets
+fonts/*
+img/*
+lang/*
+
+# Custom files to modify for each new site
+css/custom/*
+js/custom/*
+php/custom/*
+templates/custom/autoload/*
+templates/custom/*.php
+
+# All template files
+template-*.php
+single-*.php
+

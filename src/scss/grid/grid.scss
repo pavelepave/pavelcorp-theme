@@ -1,0 +1,91 @@
+.grid,.grid-uniform {
+	@include create-grid('.grid__item');
+}
+
+.grid__item {
+  width: 100%;
+  float: left;
+}
+
+/*================ Our regular, non-responsive width and helper classes ================*/
+@include device-type();
+@include device-helper();
+
+/*================ Our responsive classes, if we have enabled them ================*/
+@each $name in $breakpoint-has-widths {
+  @include grid-media-query($name) {
+    @include device-type('#{$name}');
+    @include device-helper('#{$name}');
+    @include clearfix-helper('#{$name}');
+  }
+}
+
+
+/*============================================================================
+  PUSH
+    - Push classes, to move grid items over to the right by certain amounts
+==============================================================================*/
+
+@include push-setup();
+
+@each $name in $breakpoint-has-push {
+  @include grid-media-query($name) {
+    @include push-setup('#{$name}');
+  }
+}
+
+/*============================================================================
+  PULL
+    - Pull classes, to move grid items back to the left by certain amounts
+==============================================================================*/
+
+@include pull-setup();
+
+@each $name in $breakpoint-has-push {
+  @include grid-media-query($name) {
+    @include pull-setup('#{$name}');
+  }
+}
+
+@include hidden-setup();
+
+@each $name in $breakpoint-has-hidden {
+	@include grid-media-query($name) {
+		@include hidden-setup('#{$name}');
+	}
+}
+
+.spacer {
+	margin: 60px 0;
+	&--smaller {
+		margin: 40px 0;
+	}
+}
+.clearfix {
+	@include clearfix();
+}
+
+/*============================================================================
+  Reversed grids allow you to structure your source in the opposite
+  order to how your rendered layout will appear.
+==============================================================================*/
+#{$class-type}grid--rev {
+  @extend #{$class-type}grid;
+  direction: rtl;
+  text-align: left;
+
+  > #{$class-type}grid__item {
+    direction: ltr;
+    text-align: left;
+    float: right;
+  }
+}
+/* Gutterless grids have all the properties of regular grids, minus any spacing. */
+#{$class-type}grid--full {
+  @extend #{$class-type}grid;
+  margin-left: 0;
+
+  > #{$class-type}grid__item {
+    padding-left: 0;
+  }
+}

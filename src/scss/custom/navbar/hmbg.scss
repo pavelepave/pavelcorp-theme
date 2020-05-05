@@ -1,0 +1,39 @@
+.hmbg {
+	cursor: pointer;
+
+	position: absolute;
+	top: 35px;
+	right: 20px;
+	
+	width: 14px;
+	height: 11px;
+	
+	z-index: 4;
+	
+	span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		margin-bottom: 3px;
+
+		background-color: #000;
+
+		transition: .3s all ease-out;
+	}
+}
+
+.hmbg {
+	display: block;
+	@include medium() { display: none; }
+}
+
+.navbar-open .hmbg { 
+	z-index: 6; 
+
+	span {background-color: #000;}
+
+	span:nth-child(2) { opacity: 0; }
+
+	span:nth-child(1) { transform: rotate(45deg) translate(0,7px); }
+	span:nth-child(3) { transform: rotate(-45deg) translate(0,-7px); }
+}

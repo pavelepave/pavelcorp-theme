@@ -1,0 +1,67 @@
+.table {
+	display: table;
+	width: 100%;
+	height: 100%;
+	&__wrapper {
+		display: table-row;
+	}
+	&__item {
+		display: table-cell;
+		&--middle {
+			vertical-align: middle;
+		}
+	}
+	&--rsp {
+		@extend .table;
+
+		.table {
+			&__wrapper {
+				
+				@include at-query($max, $preMedium) {
+					display: block;
+					width: 100%;
+					&:after {
+						content:"";
+						display: table;
+						clear: both;
+					}
+				}
+			}
+			&__item {
+				@include at-query($max, $preMedium) {
+					display: block;
+					float: left;
+				}
+			}
+		}
+	}
+}
+
+table.rsp {
+	display: block;
+
+	tbody,tfoot{
+		display: block;
+	}
+
+	tr {
+		@include clearfix();
+
+		display: block;
+		width: 100%;
+		padding: 0 $gutter;
+	}
+
+	td {
+		display: block;
+		float: left;
+		width: 100%;
+		&:before {
+			content: attr('data-th');
+		}
+	}
+
+	thead {
+		display: none;
+	}
+}

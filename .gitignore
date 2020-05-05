@@ -1,0 +1,21 @@
+# Mac OS
+.DS_Store
+
+# Environment
+.env
+
+# Wordpress / NPM files
+.sass-cache/
+node_modules/
+wordpress/wp-config.php
+
+# Docker mounted folders
+/mysql/*
+/logs/*
+
+
+# Saved databases
+db_save_*.sql
+/sql/
+
+*.log

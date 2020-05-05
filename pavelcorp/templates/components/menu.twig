@@ -1,0 +1,18 @@
+<div class="menu">
+	<ul>
+		{% for item in menu.items %}
+			<li class="{% if item.current %}current-menu-item{% endif %}">
+				<a href="{{item.link}}"{% if item.is_external %}target="__blank"{% endif %}>{{item}}</a>
+				{% if item.children|length > 0 %}
+					<ul class="sub-menu">
+						{% for child in item.children %}
+							<li class="{% if child.current %}current-menu-item{% endif %}">
+								<a href="{{child.link}}">{{child}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</div>

@@ -1,0 +1,67 @@
+.grid-flex__item {
+	padding-left: $gutter;
+	width: 100%;
+
+	&--auto {
+		@extend .grid-flex__item;
+		width: auto;
+	}
+}
+
+.grid-flex {
+	display: flex;
+	flex-flow: row wrap;
+
+	width: calc(100% + #{$gutter});
+	margin-left: -$gutter;
+
+	&--center {
+		@extend .grid-flex;
+
+		align-items: center;	
+		>.grid-flex__item { align-self: center; }
+	}
+}
+
+$teamGutter: 60px;
+.grid-flex-team {
+	display: flex;
+	flex-flow: row wrap;
+
+	width: calc(100% + #{$teamGutter});
+	margin-left: -$teamGutter;
+
+	> .grid-flex__item {
+		padding-left: $teamGutter;
+	}
+}
+
+
+/**
+ * Reverse flow
+ */
+.grid-flex--reverse {
+	flex-flow: row-reverse wrap;
+}
+
+/**
+ * Reverse flow big screen
+ */
+.grid-flex--reverse-md {
+	@include medium() { flex-flow: row-reverse wrap; }
+}
+
+.grid-flex--row {
+	flex-flow: row nowrap;
+}
+
+.grid-flex--row-md {
+	@include medium() {
+		flex-flow: row nowrap;
+	}
+}
+.grid-flex--row-lg {
+	@include large() {
+		flex-flow: row nowrap;
+	}
+}
