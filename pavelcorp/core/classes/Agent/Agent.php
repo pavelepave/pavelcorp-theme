@@ -2,21 +2,14 @@
 
 Namespace Pavelcorp;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
-
 use \Exception;
 use \stdClass;
-use \DrewM\MailChimp\MailChimp;
 use \WP_Query;
 /**
  * PavelcorpModule
  */
 class Agent
 {
-
-	static public $MAILCHIMP_API_KEY = '';
-	static public $LIST_ID = '';
-
 	static $namespace = 'web/api/v1';
 
 	static public $Metas = array(
@@ -99,7 +92,7 @@ class Agent
 	 */
 	private function add_hooks()
 	{
-	  add_action('admin_print_footer_scripts', array($this, 'image_meta_script'));
+	  add_action('admin_enqueue_scripts', array($this, 'image_meta_script'));
 
 	  // already visited cookie
 	  add_action('init', array( $this, 'add_visited_cookie' ));
@@ -131,10 +124,21 @@ class Agent
 	 * Script to pick image to pick from uploaded assets
 	 * Used by ImageMeta.php
 	 */
-	public function image_meta_script()
+	public function image_meta_script($hook)
 	{
-	  require_once __DIR__ . '/script-image-meta.php';
-	  require_once __DIR__ . '/script-gallery-meta.php';
+		global $post;
+
+		if ( is_admin() && $hook == 'post-new.php' || $hook == 'post.php' ) {
+     wp_register_script(  'image-meta', get_template_directory_uri() . '/core/classes/Agent/script-image-meta.js' );
+     wp_register_script(  'gallery-meta', get_template_directory_uri() . '/core/classes/Agent/script-gallery-meta.js' );
+     
+     wp_enqueue_style(  'css-meta', get_template_directory_uri() . '/core/classes/Agent/script-css.css' );
+
+     wp_enqueue_media();
+     wp_enqueue_script('image-meta');
+     wp_enqueue_script('gallery-meta');
+
+		}
 	}
 
 
@@ -464,7 +468,7 @@ class Agent
 			'type' => $type,
 			'name' => $name,
 			'title' => $title,
-			'options' => $options
-		)
+			'options' => $options,
+		);
 	}
 }

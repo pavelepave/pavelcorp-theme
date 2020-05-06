@@ -1,0 +1,58 @@
+.single-preview,
+.gallery-preview {
+		display: flex;
+		flex-flow: row wrap;
+		width: calc(100% + 16px);
+		margin-left: -16px;
+	}
+
+.single-preview  > div,
+.gallery-preview > div {
+	width: 120px;
+	flex: 0 1 auto;
+
+	margin-bottom: 16px;
+	margin-top: 16px;
+	padding-left: 16px;
+
+	display: flex;
+	align-items: center;
+
+}
+
+.single-preview  > div {
+	width: 240px;
+}
+.gallery-preview > div {
+	width: 120px;
+}
+
+.single-preview  > div,
+.gallery-preview > div {
+	position: relative;
+	z-index: 1;
+}
+
+.single-preview  > div > .remove,
+.gallery-preview > div > .remove {
+	cursor: pointer;
+
+	position: absolute;
+	z-index: 1;
+
+	top: 0;
+	right: 0;
+
+	color: #fff;
+	background: #aaa;
+	border-radius: 50%;
+
+	padding: 4px 6px;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.single-preview img,
+.gallery-preview img {
+	max-width: 100%;
+}

@@ -24,8 +24,4 @@ $no_thumb   = array( 'title', 'editor' );
 /**
  * Timber general context
  */
-$wordpress_site = new StarterSite($agent);
-
-$agent->add_to_context('timber_custom_var', 'timber_custom_value');
-
-?>
+$wordpress_site = new StarterSite($agent); ?>

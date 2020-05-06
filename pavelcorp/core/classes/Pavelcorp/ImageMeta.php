@@ -27,7 +27,7 @@ class ImageMeta extends Meta
 			data-info = '{"name": "<?php echo $this->name; ?>" }'
 			class="single-preview">
 			<?php
-			if (is_array($meta) && count($meta) > 0) {
+			if ($meta) {
 				$query_images_args = array(
 					'post__in'       => array($meta), 
 					'post_type' => array('attachment'),
