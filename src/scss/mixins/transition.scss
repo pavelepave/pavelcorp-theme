@@ -1,7 +1,0 @@
-@mixin transition( $function ) {
-  transition: $function;
-  -webkit-transition: $function;
-  -moz-transition: $function;
-  -ms-transition: $function;
-  -o-transition: $function;
-}

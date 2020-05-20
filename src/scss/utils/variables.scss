@@ -23,14 +23,13 @@ $max: max-width;
 $breakpoints: (
   '-xs' '(#{$max}: #{$small})',
   '-sm' '(#{$min}: #{$postSmall}) and (#{$max}: #{$preMedium})',
-  '-sm-down' '(#{$max}: #{$medium})',
   '-md' '(#{$min}: #{$medium}) and (#{$max}: #{$preLarge})',
   '-lg' '(min-width: #{$large})',
 );
 
-$breakpoint-has-widths: ('-xs', '-sm', '-sm-down', '-md', '-lg');
-$breakpoint-has-push:  ('-xs', '-sm', '-sm-down', '-md', '-lg');
-$breakpoint-has-pull:  ('-xs', '-sm', '-sm-down', '-md', '-lg');
-$breakpoint-has-hidden:  ('-xs', '-sm', '-sm-down', '-md', '-lg');
+$breakpoint-has-widths: ('-xs', '-sm', '-md', '-lg');
+$breakpoint-has-push:  ('-xs', '-sm', '-md', '-lg');
+$breakpoint-has-pull:  ('-xs', '-sm', '-md', '-lg');
+$breakpoint-has-hidden:  ('-xs', '-sm', '-md', '-lg');
 
 $class-type: unquote(".");

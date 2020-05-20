@@ -1,5 +1,3 @@
-$mobileSiteWidth: 481px;
-
 .__wrapper {
   @include clearfix();
 
@@ -15,13 +13,6 @@ $mobileSiteWidth: 481px;
 }
 
 .wrapper {
-  @extend .__wrapper;
-
-  max-width: $mobileSiteWidth;
-  @include medium() { max-width: $siteWidth; }
-}
-
-.wrapper-regular {
   @extend .__wrapper;
   @include medium() { max-width: $siteWidth; }
 }
