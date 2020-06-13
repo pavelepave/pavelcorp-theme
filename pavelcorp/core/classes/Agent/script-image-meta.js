@@ -52,7 +52,13 @@ jQuery(document).ready(function ($) {
 		  // Sends the attachment URL to our custom image input field.
 		  var id, url;
 		  id = media_attachment.id;
-		  url = media_attachment.url;
+			url = media_attachment.url;
+			
+			var a = document.createElement('a');
+			a.innerText = 'X';
+			a.classList.add('remove');
+
+			a.addEventListener('click', removeFromGallery);
 
 		  var img = document.createElement('img');
 		  img.src = url;
@@ -62,7 +68,8 @@ jQuery(document).ready(function ($) {
 		  input.value = id;
 		  input.name = name;
 
-		  var container = document.createElement('div');
+			var container = document.createElement('div');
+			container.appendChild(a);
 		  container.appendChild(input);
 		  container.appendChild(img);
 

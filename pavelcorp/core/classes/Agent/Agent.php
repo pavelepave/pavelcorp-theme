@@ -14,6 +14,7 @@ class Agent
 
 	static public $Metas = array(
 		'sql_post' => '\Pavelcorp\SQLMeta',
+		'multi_sql_post' => '\Pavelcorp\MultiSQLMeta',
 		'text' => '\Pavelcorp\TextMeta',
 		'radio' => '\Pavelcorp\RadioMeta',
 		'image' => '\Pavelcorp\ImageMeta',

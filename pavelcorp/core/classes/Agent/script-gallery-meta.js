@@ -54,6 +54,12 @@ jQuery(document).ready(function ($) {
 		  id = media_attachment.id;
 		  url = media_attachment.url;
 		  size = meta_image_preview.children().length;
+			
+			var a = document.createElement('a');
+			a.innerText = 'X';
+			a.classList.add('remove');
+
+			a.addEventListener('click', removeFromGallery);
 
 		  var img = document.createElement('img');
 		  img.src = url;
@@ -64,7 +70,8 @@ jQuery(document).ready(function ($) {
 		  input.name = name + '[' + size + ']';
 
 		  var container = document.createElement('div');
-		  container.appendChild(input);
+			container.appendChild(a);
+			container.appendChild(input);
 		  container.appendChild(img);
 
 		  meta_image_preview.append(container);
