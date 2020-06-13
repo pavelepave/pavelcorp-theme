@@ -1,5 +1,3 @@
-import React, {useState, useEffect} from 'react';
-
 // Style
 import './scss/header.scss'
 
