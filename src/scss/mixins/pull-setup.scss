@@ -5,17 +5,17 @@ $class-type: unquote(".");
 ==============================================================================*/
 @mixin pull-setup($namespace: "") {
 
-  #{$class-type}pull#{$namespace}-1     { right: 8.333%; position: relative; }
-  #{$class-type}pull#{$namespace}-2    { right: 16.666%; position: relative; }
-  #{$class-type}pull#{$namespace}-3  { right: 25%; position: relative; }
-  #{$class-type}pull#{$namespace}-4   { right: 33.333%; position: relative; }
-  #{$class-type}pull#{$namespace}-5   { right: 41.666%; position: relative; }
-  #{$class-type}pull#{$namespace}-6    { right: 50%; position: relative; }
-  #{$class-type}pull#{$namespace}-7  { right: 58.333%; position: relative; }
-  #{$class-type}pull#{$namespace}-8  { right: 66.666%; position: relative; }
-  #{$class-type}pull#{$namespace}-9   { right: 75%; position: relative; }
-  #{$class-type}pull#{$namespace}-10    { right: 83.333%; position: relative; }
-  #{$class-type}pull#{$namespace}-11 { right: 91.666%; position: relative; }
-  #{$class-type}pull#{$namespace}-12 { right: 100%; position: relative; }
+  #{$class-type}ll-#{$namespace}1     { right: 8.333%; position: relative; }
+  #{$class-type}ll-#{$namespace}2    { right: 16.666%; position: relative; }
+  #{$class-type}ll-#{$namespace}3  { right: 25%; position: relative; }
+  #{$class-type}ll-#{$namespace}4   { right: 33.333%; position: relative; }
+  #{$class-type}ll-#{$namespace}5   { right: 41.666%; position: relative; }
+  #{$class-type}ll-#{$namespace}6    { right: 50%; position: relative; }
+  #{$class-type}ll-#{$namespace}7  { right: 58.333%; position: relative; }
+  #{$class-type}ll-#{$namespace}8  { right: 66.666%; position: relative; }
+  #{$class-type}ll-#{$namespace}9   { right: 75%; position: relative; }
+  #{$class-type}ll-#{$namespace}10    { right: 83.333%; position: relative; }
+  #{$class-type}ll-#{$namespace}11 { right: 91.666%; position: relative; }
+  #{$class-type}ll-#{$namespace}12 { right: 100%; position: relative; }
   
 }

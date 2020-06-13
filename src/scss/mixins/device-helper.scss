@@ -1,12 +1,12 @@
 $class-type: unquote(".");
 @mixin device-helper($namespace:"") {
-  #{$class-type}col#{$namespace}-show        { display: block; }
-  #{$class-type}col#{$namespace}-hide        { display: none; }
+  #{$class-type}#{$namespace}-show        { display: block; }
+  #{$class-type}#{$namespace}-hide        { display: none; }
 
-  #{$class-type}col#{$namespace}-text-left   { text-align: left; }
-  #{$class-type}col#{$namespace}-text-right  { text-align: right; }
-  #{$class-type}col#{$namespace}-text-center { text-align: center; }
+  #{$class-type}#{$namespace}-text-left   { text-align: left; }
+  #{$class-type}#{$namespace}-text-right  { text-align: right; }
+  #{$class-type}#{$namespace}-text-center { text-align: center; }
 
-  #{$class-type}col#{$namespace}-left        { float: left; }
-  #{$class-type}col#{$namespace}-right       { float: right; }
+  #{$class-type}#{$namespace}-left        { float: left; }
+  #{$class-type}#{$namespace}-right       { float: right; }
 }
