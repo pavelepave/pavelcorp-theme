@@ -3,13 +3,13 @@ $fMedium: 400;
 $regular: 300;
 
 
-$gutter: 15px;
+$gutter: 24px;
 
 $large: 1025px;
 $medium: 769px;
 $small: 480px;
 
-$siteWidth: 1220px;
+$siteWidth: 1128px;
 
 $viewportIncrement: 1px;
 
@@ -21,15 +21,15 @@ $min: min-width;
 $max: max-width;
 
 $breakpoints: (
-  '-xs' '(#{$max}: #{$small})',
-  '-sm' '(#{$min}: #{$postSmall}) and (#{$max}: #{$preMedium})',
-  '-md' '(#{$min}: #{$medium}) and (#{$max}: #{$preLarge})',
-  '-lg' '(min-width: #{$large})',
+  'xs' '(#{$max}: #{$small})',
+  'sm' '(#{$min}: #{$postSmall}) and (#{$max}: #{$preMedium})',
+  'md' '(#{$min}: #{$medium}) and (#{$max}: #{$preLarge})',
+  'lg' '(min-width: #{$large})',
 );
 
-$breakpoint-has-widths: ('-xs', '-sm', '-md', '-lg');
-$breakpoint-has-push:  ('-xs', '-sm', '-md', '-lg');
-$breakpoint-has-pull:  ('-xs', '-sm', '-md', '-lg');
-$breakpoint-has-hidden:  ('-xs', '-sm', '-md', '-lg');
+$breakpoint-has-widths: ('xs', 'sm', 'md', 'lg');
+$breakpoint-has-push:  ('xs', 'sm', 'md', 'lg');
+$breakpoint-has-pull:  ('xs', 'sm', 'md', 'lg');
+$breakpoint-has-hidden:  ('xs', 'sm', 'md', 'lg');
 
 $class-type: unquote(".");
