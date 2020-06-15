@@ -6,17 +6,17 @@ $class-type: unquote(".");
 
 @mixin push-setup($namespace: "") {
 
-  #{$class-type}sh-#{$namespace}1     { left: 8.333%; position: relative; }
-  #{$class-type}sh-#{$namespace}2    { left: 16.666%; position: relative; }
-  #{$class-type}sh-#{$namespace}3  { left: 25%; position: relative; }
-  #{$class-type}sh-#{$namespace}4   { left: 33.333%; position: relative; }
-  #{$class-type}sh-#{$namespace}5   { left: 41.666%; position: relative; }
-  #{$class-type}sh-#{$namespace}6    { left: 50%; position: relative; }
-  #{$class-type}sh-#{$namespace}7  { left: 58.333%; position: relative; }
-  #{$class-type}sh-#{$namespace}8  { left: 66.666%; position: relative; }
-  #{$class-type}sh-#{$namespace}9   { left: 75%; position: relative; }
-  #{$class-type}sh-#{$namespace}10    { left: 83.333%; position: relative; }
-  #{$class-type}sh-#{$namespace}11 { left: 91.666%; position: relative; }
-  #{$class-type}sh-#{$namespace}12 { left: 100%; position: relative; }
+  #{$class-type}sh#{$namespace}1     { left: 8.333%; position: relative; }
+  #{$class-type}sh#{$namespace}2    { left: 16.666%; position: relative; }
+  #{$class-type}sh#{$namespace}3  { left: 25%; position: relative; }
+  #{$class-type}sh#{$namespace}4   { left: 33.333%; position: relative; }
+  #{$class-type}sh#{$namespace}5   { left: 41.666%; position: relative; }
+  #{$class-type}sh#{$namespace}6    { left: 50%; position: relative; }
+  #{$class-type}sh#{$namespace}7  { left: 58.333%; position: relative; }
+  #{$class-type}sh#{$namespace}8  { left: 66.666%; position: relative; }
+  #{$class-type}sh#{$namespace}9   { left: 75%; position: relative; }
+  #{$class-type}sh#{$namespace}10    { left: 83.333%; position: relative; }
+  #{$class-type}sh#{$namespace}11 { left: 91.666%; position: relative; }
+  #{$class-type}sh#{$namespace}12 { left: 100%; position: relative; }
 
 }
