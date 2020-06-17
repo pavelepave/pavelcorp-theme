@@ -78,3 +78,10 @@
 .gallery-preview img {
 	max-width: 100%;
 }
+
+/**
+ * SQLOrderedMeta
+ */
+.SQLOrderedMeta select {
+	margin-bottom: 8px;
+}

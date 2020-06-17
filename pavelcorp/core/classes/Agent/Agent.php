@@ -13,6 +13,7 @@ class Agent
 	static $namespace = 'web/api/v1';
 
 	static public $Metas = array(
+		'sql_ordered' => '\Pavelcorp\SQLOrderedMeta',
 		'sql_post' => '\Pavelcorp\SQLMeta',
 		'multi_sql_post' => '\Pavelcorp\MultiSQLMeta',
 		'text' => '\Pavelcorp\TextMeta',
@@ -128,16 +129,17 @@ class Agent
 	public function image_meta_script($hook)
 	{
 		global $post;
-
 		if ( is_admin() && $hook == 'post-new.php' || $hook == 'post.php' ) {
      wp_register_script(  'image-meta', get_template_directory_uri() . '/core/classes/Agent/script-image-meta.js' );
      wp_register_script(  'gallery-meta', get_template_directory_uri() . '/core/classes/Agent/script-gallery-meta.js' );
+     wp_register_script(  'sql-meta', get_template_directory_uri() . '/core/classes/Agent/script-sql.js' );
      
      wp_enqueue_style(  'css-meta', get_template_directory_uri() . '/core/classes/Agent/script-css.css' );
 
      wp_enqueue_media();
      wp_enqueue_script('image-meta');
      wp_enqueue_script('gallery-meta');
+     wp_enqueue_script('sql-meta');
 
 		}
 	}
