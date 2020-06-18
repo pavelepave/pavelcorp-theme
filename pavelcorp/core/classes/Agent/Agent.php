@@ -13,6 +13,7 @@ class Agent
 	static $namespace = 'web/api/v1';
 
 	static public $Metas = array(
+		'card' => '\Pavelcorp\CardMeta',
 		'sql_ordered' => '\Pavelcorp\SQLOrderedMeta',
 		'sql_post' => '\Pavelcorp\SQLMeta',
 		'multi_sql_post' => '\Pavelcorp\MultiSQLMeta',
