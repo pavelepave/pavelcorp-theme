@@ -31,17 +31,13 @@ class ButtonMeta extends Meta
 				$meta['text'] = isset($default['text']) ? $default['text'] : NULL;
 			if (!isset($meta['link']))
 				$meta['link'] = isset($default['link']) ? $default['link'] : NULL;
-			if (!isset($meta['extern']))
-				$meta['extern'] = isset($default['extern']) ? $default['extern'] : NULL;
 			if (!isset($meta['page']))
 				$meta['page'] = isset($default['page']) ? $default['page'] : NULL;
 		} 
 
 		$text = isset($meta['text']) ? $meta['text'] : '';
 		$link = isset($meta['link']) ? $meta['link'] : '';
-		$extern = isset($meta['extern']) ? $meta['extern'] : false;
-		$button_page = isset($meta['page']) ? $meta['page'] : 0; 
-		print_r($meta);?>
+		$button_page = isset($meta['page']) ? $meta['page'] : 0; ?>
 
 		<p>
 			<label><?php _e('Button','pavelcorp'); ?>:</label>
@@ -78,13 +74,6 @@ class ButtonMeta extends Meta
           <?php } ?>
       </select>
 		</p>
-		<p>
-			<label><?php _e('External link','pavelcorp'); ?>: </label>
-			<input 
-				type  = "checkbox" 
-				name  = "<?php echo $this->name; ?>[extern]" 
-				class = "regular-text" 
-				value = "<?php echo $extern; ?>"/>
-		</p><?php
+		<?php
 	}
 }
