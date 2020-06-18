@@ -23,7 +23,7 @@ class CardMeta extends Meta
 
   public function show_meta($post) {
     $editor_settings = array(
-      'textarea_name' => $this->name,
+      'textarea_name' => $this->name . '[content]',
       'quicktags'     => array( 'buttons' => 'em,strong,link' ),
       'tinymce'       => array(
         'theme_advanced_buttons1' => 'bold,italic,strikethrough,separator,bullist,numlist,separator,blockquote,separator,justifyleft,justifycenter,justifyright,separator,link,unlink,separator,undo,redo,separator',
@@ -31,15 +31,20 @@ class CardMeta extends Meta
       ),
       'editor_css'    => '<style>.wp-editor-area{height:175px; width:100%;}</style>',
     );
-    
+    $no_img = isset($this->options['no-img']) && $this->options['no-img'];
+    $no_button = isset($this->options['no-btn']) && $this->options['no-btn'];
     $meta = (array)get_post_meta( $post->ID, $this->name, true ); 
     
     if (isset($this->options['default'])) {
       $default = (array)$this->options['default']; 
-      $meta['title'] = isset($default['title']) ? $default['title'] : NULL;
-      $meta['content'] = isset($default['content']) ? $default['content'] : NULL;
-      $meta['button_text'] = isset($default['button_text']) ? $default['button_text'] : NULL;
-      $meta['button_link'] = isset($default['button_link']) ? $default['button_link'] : NULL;
+      if ( !isset($meta['title']) )
+        $meta['title'] = isset($default['title']) ? $default['title'] : NULL;
+      if ( !isset($meta['content']) )
+        $meta['content'] = isset($default['content']) ? $default['content'] : NULL;
+      if ( !isset($meta['button_text']) )
+        $meta['button_text'] = isset($default['button_text']) ? $default['button_text'] : NULL;
+      if ( !isset($meta['button_link']) )
+        $meta['button_link'] = isset($default['button_link']) ? $default['button_link'] : NULL;
     } 
 
     $title = isset($meta['title']) ? $meta['title'] : '';
@@ -47,8 +52,7 @@ class CardMeta extends Meta
     $img = isset($meta['img']) ? $meta['img'] : '';
     $button_text = isset($meta['button_text']) ? $meta['button_text'] : '';
     $button_link = isset($meta['button_link']) ? $meta['button_link'] : ''; 
-    $button_page = isset($meta['button_page']) ? $meta['button_page'] : 0; 
-    ?>
+    $button_page = isset($meta['button_page']) ? $meta['button_page'] : 0;  ?>
 
     <p>
       <label><?php _e('Title', 'pavelcorp'); ?>: </label>
@@ -62,6 +66,7 @@ class CardMeta extends Meta
       <label><?php _e('Content', 'pavelcorp'); ?>: </label>
       <?php Agent::wp_editor( $content, $this->name .'-'. $post->ID, $editor_settings ); ?>
     </p>
+    <?php if (!$no_button): ?>
     <p>
       <label><?php _e('Button', 'pavelcorp'); ?>: </label>
       <input 
@@ -91,12 +96,14 @@ class CardMeta extends Meta
           <?php foreach ($query_pages->posts as $page) { ?>
           <option 
             value="<?php echo $page->ID; ?>"
-            <?php if(!empty($button_page) && $button_page == $page->ID): echo "selected"; endif; ?>>
+            <?php if(isset($button_page) && $button_page == $page->ID): echo "selected"; endif; ?>>
             <?php echo $page->post_title; ?>
           </option>
           <?php } ?>
       </select>
     </p>
+    <?php endif; ?>
+    <?php if (!$no_img): ?>
     <p>
       <label><?php _e('Attachement', 'pavelcorp'); ?>: </label>
       <div 
@@ -133,7 +140,7 @@ class CardMeta extends Meta
         type="button" 
         class="button single-upload" 
         value="Browse" />
-      </p><?php
-    
+      </p>
+    <?php endif;
   }
 }
