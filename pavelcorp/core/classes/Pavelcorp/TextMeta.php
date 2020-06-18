@@ -23,8 +23,8 @@ class TextMeta extends Meta
 		
 		$meta = get_post_meta( $post->ID, $this->name, true ); 
 
-		if (!empty($options['default']) && empty($meta)) {
-			$meta = $options['default'];
+		if (!empty($this->options['default']) && empty($meta)) {
+			$meta = $this->options['default'];
 		} ?>
 
 		<p>

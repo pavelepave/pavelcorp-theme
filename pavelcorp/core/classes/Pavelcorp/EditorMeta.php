@@ -21,8 +21,8 @@ class EditorMeta extends Meta {
 	public function show_meta($post) {
 		$meta = get_post_meta( $post->ID, $this->name, true );
 
-		if (!empty($options['default']) && empty($meta)) {
-			$meta = $options['default'];
+		if (!empty($this->options['default']) && empty($meta)) {
+			$meta = $this->options['default'];
 		}
 
 		$settings = array(
