@@ -354,7 +354,7 @@ class Agent
 	public function header_css()
 	{           
 		foreach ($this->css as $script) {
-			wp_register_style($script[0], $this->css_link . $script[1], $script[2] || array(), '1.0.0');
+			wp_register_style($script[0], $this->css_link . $script[1], $script[2], ASSET_VERSION);
 			wp_enqueue_style($script[0]);
 		}
 	}
@@ -379,7 +379,7 @@ class Agent
 	{
 	  if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 			foreach ($this->scripts as $script) {
-				wp_register_script($script[0], $this->js_link . $script[1], $script[2], '1.0.0');
+				wp_register_script($script[0], $this->js_link . $script[1], $script[2], ASSET_VERSION);
 				wp_set_script_translations($script[0], 'pavelcorp', get_template_directory() . '/languages' );
 
 				wp_enqueue_script($script[0]);              
