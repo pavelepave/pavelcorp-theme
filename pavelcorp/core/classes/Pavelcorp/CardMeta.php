@@ -33,6 +33,7 @@ class CardMeta extends Meta
     );
     $no_img = isset($this->options['no-img']) && $this->options['no-img'];
     $no_button = isset($this->options['no-btn']) && $this->options['no-btn'];
+    $no_editor = isset($this->options['no-editor']) && $this->options['no-editor'];
     $meta = (array)get_post_meta( $post->ID, $this->name, true ); 
     
     if (isset($this->options['default'])) {
@@ -62,10 +63,12 @@ class CardMeta extends Meta
         class = "regular-text" 
         value = "<?php echo $title; ?>" />
     </p>
+    <?php if (!$no_editor): ?>
     <p>
       <label><?php _e('Content', 'pavelcorp'); ?>: </label>
       <?php Agent::wp_editor( $content, $this->name .'-'. $post->ID, $editor_settings ); ?>
     </p>
+    <?php endif; ?>
     <?php if (!$no_button): ?>
     <p>
       <label><?php _e('Button', 'pavelcorp'); ?>: </label>
