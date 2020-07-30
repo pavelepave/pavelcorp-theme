@@ -85,3 +85,7 @@
 .SQLOrderedMeta select {
 	margin-bottom: 8px;
 }
+
+input[type="text"] {
+	margin-bottom: 8px
+}

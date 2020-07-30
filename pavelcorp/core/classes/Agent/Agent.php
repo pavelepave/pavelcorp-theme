@@ -468,11 +468,13 @@ class Agent
 	 * @param array  $options [description]
 	 */
 	public function set_meta($type, $name, $title, $options = array()) {
-		return (object) array (
+		$obj = (object) array (
 			'type' => $type,
 			'name' => $name,
 			'title' => $title,
-			'options' => $options,
 		);
+		$obj->options = $options;
+
+		return $obj;
 	}
 }

@@ -38,7 +38,8 @@ class SQLOrderedMeta extends Meta
         $query_result = $post_query->query( $this->args ); ?>
 
 				<div>
-          <?php foreach ( $meta as $user_selected_value ) { ?>
+          <?php foreach ( $meta as $user_selected_value ) { 
+            if (is_numeric($meta)){ ?>
             <select name = "<?php echo $this->name; ?>[]">
               <option value="">---</option>
               <?php 
@@ -50,7 +51,7 @@ class SQLOrderedMeta extends Meta
                 </option>
                 <?php } ?>
             </select>
-          <?php } ?>
+          <?php }} ?>
 
           <button 
             data-options="<?php echo htmlspecialchars(json_encode($query_result), ENT_QUOTES, 'UTF-8');?>"
