@@ -39,7 +39,7 @@ class SQLOrderedMeta extends Meta
 
 				<div>
           <?php foreach ( $meta as $user_selected_value ) { 
-            if (is_numeric($meta)){ ?>
+            if (is_numeric($user_selected_value)){ ?>
             <select name = "<?php echo $this->name; ?>[]">
               <option value="">---</option>
               <?php 
