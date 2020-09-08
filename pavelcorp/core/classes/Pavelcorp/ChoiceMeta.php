@@ -28,20 +28,14 @@ class ChoiceMeta extends Meta
 
 		// Sanitize meta
 		if (empty($meta)) {
-			$meta = array( $this->choices[0]['value'] );
+			$meta = array();
 		} else if ( !is_array($meta) ) {
 			$meta = array( $meta );
 		} ?>
 
-		<label for="<?php echo $this->name; ?>">
-			<?php echo $this->description; ?>        
-		</label>
-
 		<p><?php
 
-			foreach ($this->choices as $choice) {
-				$value = $choice['value'];
-				$name = $choice['name']; ?>
+			foreach ($this->choices as $value => $name) { ?>
 				<label for = "<?php echo $this->name . '-' . $value ; ?>">
 					<input 
 						type = "checkbox" 
