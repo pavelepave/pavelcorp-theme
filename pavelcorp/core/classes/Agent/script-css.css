@@ -34,6 +34,7 @@
 	padding-bottom: 100%;
 }
 
+.gallery-preview > div video,
 .gallery-preview > div img {
 	position: absolute;
 	left: 0;
@@ -74,6 +75,8 @@
 	line-height: 12px;
 }
 
+.single-preview video,
+.gallery-preview video, 
 .single-preview img,
 .gallery-preview img {
 	max-width: 100%;
@@ -88,4 +91,15 @@
 
 input[type="text"] {
 	margin-bottom: 8px
+}
+
+select + input.SelectRole,
+select + button[data-options] {
+	vertical-align: middle;
+	margin-bottom: 0;
+	margin-left: 8px;
+}
+
+.SelectWith {
+	margin: 0 0 16px;
 }

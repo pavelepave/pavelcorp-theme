@@ -53,6 +53,8 @@ jQuery(document).ready(function ($) {
 		  var id, url;
 		  id = media_attachment.id;
 			url = media_attachment.url;
+
+			var isVideo = videoCheck(url);
 			
 			var a = document.createElement('a');
 			a.innerText = 'X';
@@ -60,7 +62,11 @@ jQuery(document).ready(function ($) {
 
 			a.addEventListener('click', removeFromGallery);
 
-		  var img = document.createElement('img');
+			if (isVideo) {
+				var img = document.createElement('video');
+			} else {
+				var img = document.createElement('img');
+			}
 		  img.src = url;
 
 		  var input = document.createElement('input');
@@ -82,3 +88,11 @@ jQuery(document).ready(function ($) {
 		meta_image_frame.open();
   });
 });
+
+// Is media a video
+function videoCheck(url) {
+	var arrUrl = url.split('.');
+	var ext = arrUrl[arrUrl.length - 1].toLowerCase();
+
+	return ext === "mp4" || ext === "webm" || ext === "ogg";
+}

@@ -38,7 +38,11 @@ class ImageMeta extends Meta
 
 				$query_images = new \WP_Query( $query_images_args );
 				foreach ( $query_images->posts as $index => $image ) {
-					$imgUrl = wp_get_attachment_image_src( $image->ID, 'sm' ); ?>
+					$type = get_post_mime_type($image->ID);
+					$isVideo = videoCheck($type);
+					$imgUrl = $isVideo 
+									? wp_get_attachment_url($image->ID) 
+									: wp_get_attachment_image_src( $image->ID, 'sm' ); ?>
 					<div>
 						<a class="remove">X</a>
 						<input 
@@ -46,7 +50,11 @@ class ImageMeta extends Meta
 							name = "<?php echo $this->name; ?>"
 							value = "<?php echo $image->ID; ?>" >
 					
-						<img src="<?php echo $imgUrl[0]; ?>">  
+						<?php if ($isVideo): ?>
+							<video src="<?php echo $imgUrl; ?>"/>
+						<?php else: ?>
+							<img src="<?php echo $imgUrl[0]; ?>"/>  
+						<?php endif; ?>
 					</div>
 				<?php }
 			} ?>
@@ -59,4 +67,9 @@ class ImageMeta extends Meta
 			value="Browse" />
 		<?php
 	}
+}
+
+// Is video or img
+function videoCheck($type) {
+	return $type === "video/mp4" || $type === "video/ogg" || $type === "video/webm";
 }

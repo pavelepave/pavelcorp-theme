@@ -23,6 +23,7 @@ class StarterSite extends TimberSite {
 
 		// Add Thumbnail Theme Support
 		add_theme_support('post-thumbnails');
+		add_image_size('xl', 1220, '', true); // xLarge Thumbnail
 		add_image_size('lg', 850, '', true); // Large Thumbnail
 		add_image_size('md', 650, '', true); // Medium Thumbnail
 		add_image_size('sm', 420, '', true); // Small Thumbnail
