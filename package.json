@@ -19,5 +19,8 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
+  },
+  "scripts": {
+    "symlink": "cd wordpress/wp-content/theme/ && ln -s ../../../pavelcorp pavelcorp"
   }
 }
