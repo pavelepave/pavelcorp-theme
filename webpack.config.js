@@ -9,7 +9,7 @@ module.exports = {
     notFound: "./src/404.js",
   },
   output: {
-    path: path.join(__dirname, "/wordpress/wp-content/themes/pavelcorp"),
+    path: path.join(__dirname, "/pavelcorp"),
     filename: "js/custom/[name].pavelcorp.js",
     chunkFilename: "js/custom/[name].pavelcorp.js",
     publicPath: "/wp-content/themes/pavelcorp/"
