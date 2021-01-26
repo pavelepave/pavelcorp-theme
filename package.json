@@ -21,6 +21,9 @@
     "webpack-dev-server": "^3.1.9"
   },
   "scripts": {
-    "symlink": "cd wordpress/wp-content/theme/ && ln -s ../../../pavelcorp pavelcorp"
+    "symlink": "cd wordpress/wp-content/theme/ && ln -s ../../../pavelcorp pavelcorp",
+    "clean": "rm pavelcorp/js/custom/*.js pavelcorp/css/custom/*.css",
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   }
 }
