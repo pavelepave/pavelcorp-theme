@@ -21,7 +21,7 @@ $min: min-width;
 $max: max-width;
 
 $breakpoints: (
-  'xs' '(#{$max}: #{$small})',
+  'xs' '',
   'sm' '(#{$min}: #{$postSmall}) and (#{$max}: #{$preMedium})',
   'md' '(#{$min}: #{$medium}) and (#{$max}: #{$preLarge})',
   'lg' '(min-width: #{$large})',

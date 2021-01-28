@@ -7,16 +7,13 @@
 // fonts
 @import 'custom/fonts';
 
-// Normalize
-@import 'utils/normalize';
+// Hamburger menu
+@import 'custom/layout/hmbg';
 
-// Grid
-@import 'grid/_main';
+// Reusable components
+@import 'custom/titles';
+@import 'custom/button-custom';
+@import 'custom/input';
 
 // Footer / navbar
-@import 'custom/navbar/_main';
-
-// Useful components
-@import 'custom/titles';
-@import 'custom/button';
-@import 'custom/input';
+@import 'custom/layout/footer';

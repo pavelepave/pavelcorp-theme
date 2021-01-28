@@ -40,13 +40,15 @@ class ButtonMeta extends Meta
 		$button_page = isset($meta['page']) ? $meta['page'] : 0; ?>
 
 		<p>
-			<label><?php _e('Button','pavelcorp'); ?>:</label>
+			<div>
+				<label><?php _e('Button','pavelcorp'); ?>:</label>
+			</div>
 			<input 
 				type  = "text" 
 				name  = "<?php echo $this->name; ?>[text]" 
 				class = "regular-text" 
 				placeholder = "Text"
-				value = "<?php echo $text; ?>"/>
+				value = "<?php echo $text; ?>"/><br/>
 			<input 
 				type  = "text" 
 				name  = "<?php echo $this->name; ?>[link]" 

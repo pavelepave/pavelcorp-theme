@@ -23,7 +23,6 @@ class Agent
 		'video' => '\Pavelcorp\VideoMeta',
 		'editor' => '\Pavelcorp\EditorMeta',
 		'button' => '\Pavelcorp\ButtonMeta',
-		'group' => '\Pavelcorp\GroupMeta',
 		'post' => '\Pavelcorp\PostMeta',
 		'checkbox' => '\Pavelcorp\ChoiceMeta',
 		'select' => '\Pavelcorp\SelectMeta',

@@ -8,10 +8,14 @@
 
     @if $media-query == $name and $declaration {
       $breakpoint-found: true;
-
-      @media only screen and #{$declaration} {
+      @if  $declaration != '' {
+        @media only screen and #{$declaration} {
+          @content;
+        }
+      } @else {
         @content;
       }
+
     }
   }
 

@@ -66,15 +66,6 @@ class Meta
         }
     }
 
-    protected function clean_url($db_url)
-    {
-        $url = wp_parse_url($db_url);
-        $site_url = wp_parse_url(get_site_url());
-        $port = $site_url['port'] == '80' || $site_url['port'] == '443' ? '' : ':'.$site_url['port']; 
-
-        return trim($site_url['scheme'] . '://' . $site_url['host'] . $port . $url['path']);
-    }
-
     public function save($post_id) {
         return $this->save_meta($post_id, $this->name, $this->nonce);
     }

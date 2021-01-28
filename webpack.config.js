@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     main: "./src/index.js",
     notFound: "./src/404.js",
+    mainInline: "./src/inline/header.js"
   },
   output: {
     path: path.join(__dirname, "/pavelcorp"),
@@ -29,16 +30,23 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader, 
+            loader: MiniCssExtractPlugin.loader,
           },
-          "css-loader", 
+          "css-loader",
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({grid: true})
-              ]
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: [
+                  [
+                    'autoprefixer',
+                    {
+                      grid: true
+                    }
+                  ]
+                ]
+              }
             }
           },
           "sass-loader"
@@ -81,7 +89,9 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/custom/[name].css"
+      filename: function () {
+        return "css/custom/[name].css"
+      },
     })
   ]
 };

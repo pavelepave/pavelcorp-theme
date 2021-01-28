@@ -23,13 +23,11 @@ class CardMeta extends Meta
 
   public function show_meta($post) {
     $editor_settings = array(
-      'textarea_name' => $this->name . '[content]',
-      'quicktags'     => array( 'buttons' => 'em,strong,link' ),
-      'tinymce'       => array(
-        'theme_advanced_buttons1' => 'bold,italic,strikethrough,separator,bullist,numlist,separator,blockquote,separator,justifyleft,justifycenter,justifyright,separator,link,unlink,separator,undo,redo,separator',
-        'theme_advanced_buttons2' => '',
-      ),
-      'editor_css'    => '<style>.wp-editor-area{height:175px; width:100%;}</style>',
+      'wpautop' => true,
+      'media_buttons' => false,
+      'textarea_name' => $this->name . '[]',
+      'textarea_rows' => 10,
+      'teeny' => true
     );
     $no_img = isset($this->options['no-img']) && $this->options['no-img'];
     $no_button = isset($this->options['no-btn']) && $this->options['no-btn'];

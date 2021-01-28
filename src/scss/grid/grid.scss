@@ -7,15 +7,10 @@
   float: left;
 }
 
-/*================ Our regular, non-responsive width and helper classes ================*/
-@include device-type();
-@include device-helper();
-
 /*================ Our responsive classes, if we have enabled them ================*/
 @each $name in $breakpoint-has-widths {
   @include grid-media-query($name) {
     @include device-type('#{$name}');
-    @include device-helper('#{$name}');
     @include clearfix-helper('#{$name}');
   }
 }
@@ -25,8 +20,6 @@
   PUSH
     - Push classes, to move grid items over to the right by certain amounts
 ==============================================================================*/
-
-@include push-setup();
 
 @each $name in $breakpoint-has-push {
   @include grid-media-query($name) {
@@ -38,8 +31,6 @@
   PULL
     - Pull classes, to move grid items back to the left by certain amounts
 ==============================================================================*/
-
-@include pull-setup();
 
 @each $name in $breakpoint-has-push {
   @include grid-media-query($name) {
