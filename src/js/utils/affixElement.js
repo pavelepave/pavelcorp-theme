@@ -4,7 +4,7 @@
  * @memberOf moduleScroll
  * @constant
  * @type {number}
- */ 
+ */
 const NAVBAR_HIDE = 20;
 
 /**
@@ -13,7 +13,7 @@ const NAVBAR_HIDE = 20;
  * @memberOf moduleScroll
  * @constant
  * @type {string}
- */ 
+ */
 const AFFIX_CLASS = 'affix';
 
 /**
@@ -23,8 +23,13 @@ const AFFIX_CLASS = 'affix';
  */
 function Affix(navbar, options) {
 	'use strict';
-	otpions = options || {};
-	
+
+	if (!navbar) {
+		return console.warn('Affix: navbar element not found.')
+	}
+
+	options = options || {};
+
 	this.threshold = options.threshold ? options.threshold : NAVBAR_HIDE;
 	this.affixClass = options.affixClass ? options.affixClass : AFFIX_CLASS;
 
@@ -50,11 +55,11 @@ function Affix(navbar, options) {
 }
 
 /** Affix */
-export default function(navbar, options) {
+export default function (navbar, options) {
 	const module = new Affix(navbar, options);
-	
+
 	window.addEventListener('scroll', module.affix);
-	return function() {
+	return function () {
 		window.removeEventListener('scroll', module.affix);
 	}
 }

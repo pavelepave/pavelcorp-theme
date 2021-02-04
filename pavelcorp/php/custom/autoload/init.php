@@ -217,3 +217,21 @@ function pavelcorp_register_menus($context) {
 
   return $context;
 }
+
+/**
+ * Add async attr to scripts
+ */
+add_filter('script_loader_tag', 'pavelcorp_script_loader_tag', 10, 4);
+function pavelcorp_script_loader_tag( $tag, $handle, $src ) {
+  if(!is_admin()) {
+    if ( 
+      strpos($handle, 'async-') !== false ||
+      'wp-polyfill' === $handle || 
+      'wp-embed' === $handle ||
+      'wp-i18n' === $handle
+    ) {
+      $tag = '<script type="text/javascript" src="' . esc_url( $src ) . '" async></script>';
+    }
+  }
+  return $tag;
+}
