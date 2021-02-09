@@ -1,3 +1,6 @@
+/**
+ * Gallery / Image
+ */
 .single-preview,
 .gallery-preview {
 		display: flex;
@@ -102,4 +105,99 @@ select + button[data-options] {
 
 .SelectWith {
 	margin: 0 0 16px;
+}
+
+/**
+ * Table
+ */
+.TableBody > div,
+.TableHead > div {
+	position: relative;
+	padding: 24px 8px;
+	background-color: #eee;
+
+	border-bottom: 2px solid #fff;
+}
+
+.TableBody .RemoveRow,
+.TableHead .RemoveRow {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+}
+
+.TableBody input[type="text"],
+.TableHead input[type="text"] {
+	display: block;
+	width: 100%;
+	max-width: 250px;;
+}
+
+.AddRow {
+	display: block;
+	width: 100%;
+
+	height: 48px;
+	line-height: 48px;
+	font-size: 16px;
+
+	margin: 16px 0 8px;
+
+	text-align: center;
+	color: var(--wp-admin-theme-color);
+	text-decoration: none;
+	
+	border: 1px dashed var(--wp-admin-theme-color);
+	will-change: background-color;
+	transition: .3s background-color;
+}
+
+.AddRow:hover {
+	color: #fff;
+	background-color: var(--wp-admin-theme-color);
+}
+
+.TableCheckbox {
+	display: block;
+	position: relative;
+}
+
+.TableCheckbox input{
+	appearance: none;
+	-webkit-appearance: none;
+
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	border: none;
+	visibility: hidden;
+}
+
+.TableCheckbox input + span{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+
+	border-radius: 100%;
+
+	background-color: #ddd;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuNTkyIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xLjE4NCAxMi4zNjVMMTIuODQ4IDFNMTIuODQ4IDEyLjM2NUwxLjE4NCAxIi8+PC9nPjwvc3ZnPg==);
+}
+
+.TableCheckbox input:checked + span {
+	background-color: var(--wp-admin-theme-color);
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuMTU3IDguMzU5bDUuMTg0IDUuMTg0TDE4LjAwNSAxLjIzIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iMi41OTIiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
+}
+
+.TableBody > div {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.TableBody > div > div {
+	flex: 1 1 auto;
 }
