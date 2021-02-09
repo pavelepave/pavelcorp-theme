@@ -13,6 +13,8 @@ class Agent
 	static $namespace = 'web/api/v1';
 
 	static public $Metas = array(
+		'custom' => '\Pavelcorp\CustomMeta',
+		'table' => '\Pavelcorp\TableMeta',
 		'card' => '\Pavelcorp\CardMeta',
 		'sql_ordered' => '\Pavelcorp\SQLOrderedMeta',
 		'sql_post' => '\Pavelcorp\SQLMeta',
@@ -130,18 +132,14 @@ class Agent
 	{
 		global $post;
 		if ( is_admin() && $hook == 'post-new.php' || $hook == 'post.php' ) {
-     wp_register_script(  'image-meta', get_template_directory_uri() . '/core/classes/Agent/script-image-meta.js' );
-     wp_register_script(  'gallery-meta', get_template_directory_uri() . '/core/classes/Agent/script-gallery-meta.js' );
-		 wp_register_script(  'sql-meta', get_template_directory_uri() . '/core/classes/Agent/script-sql.js' );
-		 wp_register_script(  'table-meta', get_template_directory_uri() . '/core/classes/Agent/script-table.js' );
+     wp_register_script(  'sql-meta', get_template_directory_uri() . '/core/classes/Agent/script-sql.js' );
+     wp_register_script(  'custom-meta', get_template_directory_uri() . '/core/classes/Agent/script-custom.js' );
      
      wp_enqueue_style(  'css-meta', get_template_directory_uri() . '/core/classes/Agent/script-css.css' );
 
      wp_enqueue_media();
-     wp_enqueue_script('image-meta');
-     wp_enqueue_script('gallery-meta');
-		 wp_enqueue_script('sql-meta');
-		 wp_enqueue_script('table-meta');
+     wp_enqueue_script('sql-meta');
+     wp_enqueue_script('custom-meta');
 
 		}
 	}

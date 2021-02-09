@@ -25,7 +25,7 @@ class GalleryMeta extends Meta
 		<!-- Gallery -->
 		<div 
 			data-info = '{"name": "<?php echo $this->name; ?>" }'
-			class="gallery-preview">
+			class="gallery-preview preview-zone">
 			<?php
 			if (is_array($meta) && count($meta) > 0) {
 				$query_images_args = array(

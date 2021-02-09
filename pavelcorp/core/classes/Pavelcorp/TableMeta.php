@@ -30,9 +30,13 @@ class TableMeta extends Meta
     if (!isset($meta['head'])) {$meta['head'] = array();}  
     if (!isset($meta['body'])) {$meta['body'] = array();}  ?>
     <!-- Head -->
+    <div class="TableContainer" 
+      data-cols="<?php echo esc_attr(json_encode($body_cols)); ?>"
+      data-rows="<?php echo esc_attr(json_encode($head_rows)); ?>"
+      data-name="<?php echo $this->name; ?>">
       <p>
         <h4><?php _e('Table Head', 'pavelcorp'); ?></h4>
-        <div class="TableHead" data-name="<?php echo $this->name; ?>"><?php
+        <div class="TableHead"><?php
         $i = 0;
         foreach ($meta['head'] as $row) {
           $j = 0;
@@ -48,21 +52,19 @@ class TableMeta extends Meta
         } ?>
         </div>
         <a href="javascript:{}" 
-          class="AddRow" 
-          data-rows="<?php echo esc_attr(json_encode($head_rows)); ?>"
-          onclick="addNewHeadCol(event)">
+          class="AddRow AddHeadRow" >
           <?php _e('Add column', 'pavlecorp'); ?>
         </a>
       </p>
       <!-- Body -->
       <p>
         <h4><?php _e('Table row(s)', 'pavlecorp'); ?></h4>
-        <div class="TableBody" data-name="<?php echo $this->name; ?>"><?php 
+        <div class="TableBody"><?php 
         $i = 0;
         foreach ($meta['body'] as $row) {
           $j = 0;
           ?><div>
-          <a class="RemoveRow" href="javascript:{}" onclick="removeRow(event)">[ remove ]</a>
+          <a class="RemoveRow" href="javascript:{}">[ remove ]</a>
           <?php foreach ($row as $value) {
             $type = $body_cols[$j];
             $this->e_input($value, $i, $j, $type, FALSE);
@@ -73,12 +75,11 @@ class TableMeta extends Meta
         }?>
         </div>
         <a href="javascript:{}" 
-          class="AddRow" 
-          data-cols="<?php echo esc_attr(json_encode($body_cols)); ?>"
-          onclick="addNewRow(event)">
+          class="AddRow AddBodyRow">
           <?php _e('Add new row', 'pavlecorp'); ?>
         </a>
       </p>
+    </div
     <?php 
   }
 
