@@ -235,3 +235,13 @@ function pavelcorp_script_loader_tag( $tag, $handle, $src ) {
   }
   return $tag;
 }
+
+add_filter('post_row_actions', 'pavelcorp_remove_quick_edit', 10, 1);
+add_filter('page_row_actions', 'pavelcorp_remove_quick_edit', 10, 1);
+/**
+ * Remove quick edit
+ */
+function pavelcorp_remove_quick_edit($actions) {
+  unset($actions['inline hide-if-no-js']);
+  return $actions;
+}
