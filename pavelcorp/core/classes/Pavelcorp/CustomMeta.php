@@ -27,8 +27,15 @@ class CustomMeta extends Meta
       'title' => 'text', 
       'content' => 'editor',
     );
-
-    $meta = (array)get_post_meta( $post->ID, $this->name, true ); ?>
+    $default = isset($options->default) ? $options->default : array();
+    $meta = (array)get_post_meta( $post->ID, $this->name, true ); 
+    if (sizeof($default) > 0 ) {
+      foreach ($default as $key => $value) {
+        if (!isset($meta[$key]) || empty($meta[$key])) {
+          $meta[$key] = $value;
+        }
+      }
+    }?>
     <div class="GroupContainer">
       <p>
         <div class="MetaGroups" 

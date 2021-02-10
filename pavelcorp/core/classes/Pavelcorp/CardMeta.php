@@ -109,7 +109,7 @@ class CardMeta extends Meta
       <label><?php _e('Attachement', 'pavelcorp'); ?>: </label>
       <div 
         data-info = '{"name": "<?php echo $this->name; ?>[img]" }'
-        class="single-preview">
+        class="single-preview preview-zone">
         <?php
         if ($img) {
           $query_images_args = array(

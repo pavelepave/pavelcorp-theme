@@ -45,8 +45,6 @@ jQuery(document).ready(function ($) {
 	$('.GroupContainer').each(function () {
 		var inputs = new CustomInputs(this.querySelector('.MetaGroups'));
 
-		console.log($('.AddCustomRow', this))
-
 		/**
 		 * Event handler : add new body row
 		 */
@@ -57,7 +55,6 @@ jQuery(document).ready(function ($) {
 		});
 
 		$('.RemoveRow', this).on('click', function (evt) {
-			console.log(evt)
 			inputs.removeRow(evt);
 		});
 	})
