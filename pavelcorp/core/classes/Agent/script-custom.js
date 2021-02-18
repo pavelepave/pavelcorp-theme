@@ -29,13 +29,13 @@ jQuery(document).ready(function ($) {
 
 		$('.AddHeadRow', this).on('click', function (evt) {
 			evt.preventDefault();
-			var length = table.head.length;
+			var length = table.head.children.length;
 			table.createNewHeadCol(length);
 		})
 
 		$('.AddBodyRow', this).on('click', function (evt) {
 			evt.preventDefault();
-			var length = table.body.length;
+			var length = table.body.children.length;
 			table.createNewBodyRow(length);
 		})
 
@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
 		$('.RemoveRow', this).on('click', function (evt) {
 			inputs.removeRow(evt);
 		});
-	})
+	});
 
 
 	/**

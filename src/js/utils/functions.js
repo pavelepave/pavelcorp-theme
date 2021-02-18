@@ -3,28 +3,16 @@
  * @function
  * @name onDomContentLoaded
  * @memberof FunctionsIndex
- * @return {function} 
+ * @param {function} cb Callback function to execute when DOM is ready
  */
-export function onDomContentLoaded() {
-
+export function onDomContentLoaded(cb) {
 	/**
 	 * Set DOMLoaded variable when DOM has loaded
 	 */
-	document.addEventListener('DOMContentLoaded', ( ) => {
-		window.DOMLoaded = true;
-	});
-
-	/**
-	 * Add a function to fire when DOM is loaded
-	 * @name FunctionsIndex~onDomContentLoadedFn
-	 * @param {DomLoadedCallback} cb - Callback function
-	 */
-	return (cb) => {
-		if (window.DOMLoaded) cb()
-		else document.addEventListener('DOMContentLoaded', cb);
-	}
-	/**
-	 * Function to call on DOMContentLoaded
-	 * @callback DomLoadedCallback
-	 */
+	let loop = setInterval(() => {
+		if (document.readyState === 'complete' || document.readyState === 'interactive') {
+			cb();
+			clearInterval(loop);
+		}
+	}, 10);
 }

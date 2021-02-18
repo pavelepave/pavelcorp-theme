@@ -15,6 +15,6 @@
 		<div class="body">
 			<?php 
 				Timber::render(
-					'templates/custom/parts/header.twig', 
+					'templates/parts/header.twig', 
 					Timber::get_context()
 				); ?>

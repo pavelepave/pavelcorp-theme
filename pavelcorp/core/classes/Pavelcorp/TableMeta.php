@@ -34,27 +34,29 @@ class TableMeta extends Meta
       data-cols="<?php echo esc_attr(json_encode($body_cols)); ?>"
       data-rows="<?php echo esc_attr(json_encode($head_rows)); ?>"
       data-name="<?php echo $this->name; ?>">
-      <p>
-        <h4><?php _e('Table Head', 'pavelcorp'); ?></h4>
-        <div class="TableHead"><?php
-        $i = 0;
-        foreach ($meta['head'] as $row) {
-          $j = 0;
-          ?><div>
-          <a class="RemoveRow" href="javascript:{}" onclick="removeRow(event)">[ remove ]</a>
-          <?php foreach ($row as $value) {
-            $type = $head_rows[$j];
-            $this->e_input($value, $i, $j, $type, TRUE);
-            $j++;
-          }
-          $i++;
-          ?></div><?php
-        } ?>
-        </div>
-        <a href="javascript:{}" 
-          class="AddRow AddHeadRow" >
-          <?php _e('Add column', 'pavlecorp'); ?>
-        </a>
+      <p><?php
+        if(sizeof($head_rows) > 0) {?>
+          <h4><?php _e('Table Head', 'pavelcorp'); ?></h4>
+          <div class="TableHead"><?php
+          $i = 0;
+          foreach ($meta['head'] as $row) {
+            $j = 0;
+            ?><div>
+            <a class="RemoveRow" href="javascript:{}" onclick="removeRow(event)">[ remove ]</a>
+            <?php foreach ($row as $value) {
+              $type = $head_rows[$j];
+              $this->e_input($value, $i, $j, $type, TRUE);
+              $j++;
+            }
+            $i++;
+            ?></div><?php
+          } ?>
+          </div>
+          <a href="javascript:{}" 
+            class="AddRow AddHeadRow" >
+            <?php _e('Add column', 'pavlecorp'); ?>
+          </a><?php
+        }?>
       </p>
       <!-- Body -->
       <p>
