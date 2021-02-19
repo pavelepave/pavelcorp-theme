@@ -7,7 +7,7 @@
 # Wordpress / NPM files
 .sass-cache/
 node_modules/
-wordpress/wp-config.php
+wordpress/
 
 # Docker mounted folders
 /mysql/*

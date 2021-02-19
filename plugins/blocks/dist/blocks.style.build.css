@@ -1,0 +1,29 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.Block-Hero {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-left: -24px;
+  width: calc(100% + 24px); }
+  .Block-Hero > div {
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    width: 50%;
+    padding-left: 24px; }
+
+.Block-Hero--Reverse {
+  -ms-flex-flow: row-reverse wrap;
+      flex-flow: row-reverse wrap; }

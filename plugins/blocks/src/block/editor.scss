@@ -1,0 +1,160 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+// Responsive img
+.Block-ResponsiveImg{
+  max-width: 100%;
+  display: block;
+
+  position: relative;
+}
+
+// Remove img
+.Block-ResponsiveImg__Remove {
+  cursor: pointer;
+  
+  z-index: 1;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 100%;
+  background-color: #aaa;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 16px;
+    height: 1px;
+    background-color: #fff;
+  }
+
+  span:first-child {
+    transform: translate(-50%,-50%) rotate(-45deg);
+  }
+  span:last-child {
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+}
+
+// Radio
+.Block-Radio {
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.Block-Radio {
+  margin: 0 16px;
+  display: inline-block;
+  position: relative;
+
+  width: 40px;
+  height: 24px;
+
+  background-color: var(--wp-admin-theme-color);
+  border-radius: 12px;
+
+  span {
+    position: absolute;
+    z-index: 1;
+
+    top: 4px;
+    left: 4px;
+    
+    width: 24px - 2*4px;
+    height: 24px - 2*4px;
+
+    background-color: #fff;
+    border-radius: 100%;
+    transition: .3s transform;
+  }
+
+  input:checked + span {
+    transform: translateX(16px);
+  }
+}
+
+
+$gutter: 16px;
+
+.Back-Block-Features {
+  display: flex;
+  flex-flow: row wrap;
+  
+  width: calc(100% + #{$gutter});
+  margin-left: -$gutter;
+  
+  > div {
+    flex: 1 1 auto;
+    min-width: 50%;
+    padding-left: $gutter;
+  }
+}
+
+.Back-Block-Feature {
+  .Block-ResponsiveImg{
+    width: 140px;
+    height: 140px;
+    img {
+      object-fit: contain;
+      object-position: 50% 50%;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/**
+ * Add button
+ */
+.Block-Add,
+.Block-Remove{
+  display: block;
+
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+
+  margin: 16px auto;
+}
+
+.Block-Remove {
+  color: red;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.Block-AddImg,
+.Block-Add {
+  color: var(--wp-admin-theme-color);
+  border: 1px solid;
+  border-radius: 2px;
+}

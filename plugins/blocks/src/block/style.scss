@@ -1,0 +1,26 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+$gutter: 24px;
+
+.Block-Hero {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  margin-left: -$gutter;
+  width: calc(100% + #{$gutter});
+
+  > div {
+    flex: 1 1 auto;
+    width: 50%;
+    padding-left: $gutter;
+  }
+}
+
+.Block-Hero--Reverse {
+  flex-flow: row-reverse wrap;
+}

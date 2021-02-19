@@ -5,7 +5,7 @@
 
 	<?php 
 		Timber::render(
-			'templates/custom/parts/head.twig', 
+			'templates/parts/head.twig', 
 			Timber::get_context()
 		); 
 		wp_head(); ?>
