@@ -8,7 +8,7 @@ use TimberPost;
 use Twig_Extension_StringLoader;
 use Twig_SimpleFilter;
 
-if (defined('TimberSite')) {
+if (class_exists('TimberSite')) {
 	/**
 	 * StarterSite
 	 */
@@ -28,13 +28,14 @@ if (defined('TimberSite')) {
 			add_image_size('md', 650, '', true); // Medium Thumbnail
 			add_image_size('sm', 420, '', true); // Small Thumbnail
 			add_image_size('xs', 120, '', true); // Extra Small Thumbnail
-			add_image_size('base64', 20, '', true); // Extra Small Thumbnail
+			add_image_size('base64', 10, '', true); // Extra Small Thumbnail
 	
 			// Localisation Support
 			load_theme_textdomain('pavelcorp', get_template_directory() . '/languages');
 	
 			add_filter( 'timber_context', array( $this, 'add_to_context' ) );
 			add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
+			add_filter('image_size_names_choose', array($this, 'image_size_names'));
 			
 			parent::__construct();
 		}
@@ -68,6 +69,20 @@ if (defined('TimberSite')) {
 			);
 	
 			return $twig;
+		}
+
+		/**
+		 * image_size_names_choose filter
+		 */
+		function image_size_names($sizes) {
+			return array_merge($sizes, array(
+				'xl' => __('X Large', 'pavelcorp'),
+				'lg' => __('Large', 'pavelcorp'),
+				'md' => __('Medium', 'pavelcorp'),
+				'sm' => __('Small', 'pavelcorp'),
+				'xs' => __('X Small', 'pavelcorp'),
+				'base64' => __('Base64', 'pavelcorp'),
+			));
 		}
 	
 		/**

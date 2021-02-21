@@ -2,6 +2,7 @@
   "version": "1.1.0",
   "name": "pavelcorp-hero-block",
   "dependencies": {
+    "axios": "^0.21.1",
     "cgb-scripts": "^1.23.1",
     "create-guten-block": "^1.14.1"
   },

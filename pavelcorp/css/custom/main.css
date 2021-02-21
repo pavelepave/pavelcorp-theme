@@ -1,1 +1,54 @@
-.hmbg{cursor:pointer;position:absolute;top:35px;right:20px;width:14px;height:11px;z-index:4}.hmbg span{height:2px;width:100%;margin-bottom:3px;background-color:#000;transition:all .3s ease-out}.hmbg,.hmbg span{display:block}@media screen and (min-width:769px){.hmbg{display:none}}.navbar-open .hmbg{z-index:6}.navbar-open .hmbg span{background-color:#000}.navbar-open .hmbg span:nth-child(2){opacity:0}.navbar-open .hmbg span:first-child{transform:rotate(45deg) translateY(7px)}.navbar-open .hmbg span:nth-child(3){transform:rotate(-45deg) translateY(-7px)}
+/**
+ * Grids and usefull components that can be placed on any pages (navigation, button,)
+ */
+/**
+ * Mixins and variables to improve coding.
+ * Can be placed before any file
+ */
+/*================ Clearfix helper on uniform grids ================*/
+/*============================================================================
+  Dependency-free breakpoint mixin
+    - Based on http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
+    - Usage docs: http://shopify.github.io/Timber/#sass-mixins
+==============================================================================*/
+/*============================================================================
+  PUSH
+    - Push classes, to move grid items over to the right by certain amounts
+==============================================================================*/
+/*============================================================================
+  PULL
+    - Pull classes, to move grid items back to the left by certain amounts
+==============================================================================*/
+.hmbg {
+  cursor: pointer;
+  position: absolute;
+  top: 35px;
+  right: 20px;
+  width: 14px;
+  height: 11px;
+  z-index: 4; }
+  .hmbg span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin-bottom: 3px;
+    background-color: #000;
+    transition: .3s all ease-out; }
+
+.hmbg {
+  display: block; }
+  @media screen and (min-width: 769px) {
+    .hmbg {
+      display: none; } }
+
+.navbar-open .hmbg {
+  z-index: 6; }
+  .navbar-open .hmbg span {
+    background-color: #000; }
+  .navbar-open .hmbg span:nth-child(2) {
+    opacity: 0; }
+  .navbar-open .hmbg span:nth-child(1) {
+    transform: rotate(45deg) translate(0, 7px); }
+  .navbar-open .hmbg span:nth-child(3) {
+    transform: rotate(-45deg) translate(0, -7px); }
+

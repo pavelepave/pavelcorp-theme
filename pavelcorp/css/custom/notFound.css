@@ -1,1 +1,28 @@
-#post-404{padding-top:120px;padding-bottom:48px}@media screen and (min-width:481px){#post-404{padding-top:160px;padding-bottom:80px}}#post-404 h1{margin-bottom:16px}
+/**
+ * Mixins and variables to improve coding.
+ * Can be placed before any file
+ */
+/*================ Clearfix helper on uniform grids ================*/
+/*============================================================================
+  Dependency-free breakpoint mixin
+    - Based on http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
+    - Usage docs: http://shopify.github.io/Timber/#sass-mixins
+==============================================================================*/
+/*============================================================================
+  PUSH
+    - Push classes, to move grid items over to the right by certain amounts
+==============================================================================*/
+/*============================================================================
+  PULL
+    - Pull classes, to move grid items back to the left by certain amounts
+==============================================================================*/
+#post-404 {
+  padding-top: 120px;
+  padding-bottom: 48px; }
+  @media screen and (min-width: 481px) {
+    #post-404 {
+      padding-top: 160px;
+      padding-bottom: 80px; } }
+  #post-404 h1 {
+    margin-bottom: 16px; }
+

@@ -29,7 +29,7 @@ $no_thumb   = array( 'title', 'editor' );
 /**
  * Timber general context
  */
-if (defined('StarterSite')) {
+if (class_exists('TimberSite')) {
   $wordpress_site = new StarterSite($agent); 
 }
 

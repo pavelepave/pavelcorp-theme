@@ -10,6 +10,10 @@
  * CSS for both Frontend+Backend.
  */
 .Block-Hero {
+  padding: 48px 0; }
+
+.Block-Features > ul,
+.Block-Hero {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: row wrap;
@@ -18,12 +22,57 @@
       align-items: center;
   margin-left: -24px;
   width: calc(100% + 24px); }
+  .Block-Features > ul > li,
+  .Block-Features > ul > div,
+  .Block-Hero > li,
   .Block-Hero > div {
     -ms-flex: 1 1 auto;
         flex: 1 1 auto;
-    width: 50%;
-    padding-left: 24px; }
+    padding-left: 24px;
+    margin-bottom: 32px; }
 
 .Block-Hero--Reverse {
   -ms-flex-flow: row-reverse wrap;
       flex-flow: row-reverse wrap; }
+
+.Block-Hero__Img {
+  max-width: 83.33333%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.Block-Feature__Img {
+  height: 160px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+      align-items: flex-end; }
+  .Block-Feature__Img img {
+    max-width: 180px; }
+
+.Block-Feature__Img img,
+.Block-Hero__Img img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  width: 100%;
+  height: 100%; }
+
+@media screen and (min-width: 825px) {
+  .Block-Hero {
+    padding: 80px 0; }
+  .Block-Hero > div {
+    margin-bottom: 0; }
+    .Block-Hero > div:first-child {
+      width: 41.66667%;
+      max-width: 41.66667%; }
+    .Block-Hero > div:last-child {
+      position: relative;
+      width: 50%;
+      max-width: 50%;
+      left: 8.33333%; }
+  .Block-Hero__Img {
+    max-width: 100%; }
+  .Block-Features > ul > li {
+    width: 33%;
+    max-width: 33%; } }

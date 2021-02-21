@@ -10,11 +10,11 @@ import './editor.scss';
 import './style.scss';
 
 import Uploader from '../utils/media-upload';
+import Image from '../utils/image';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, URLInput } = wp.blockEditor; 
-const { withSelect } = wp.data;
 
 /**
  * Register: aa Gutenberg Block.
@@ -59,6 +59,14 @@ registerBlockType( 'pavelcorp/hero-block', {
 			default: 0
 		},
 		mediaUrl: {
+			type: 'string',
+			default: ''
+		},
+		media: {
+			type: 'object',
+			default: {}
+		},
+		base64: {
 			type: 'string',
 			default: ''
 		},
@@ -122,8 +130,7 @@ registerBlockType( 'pavelcorp/hero-block', {
 			<div>
 				<Uploader 
 					{...props} 
-					mediaId={props.attributes.mediaId} 
-					mediaUrl={props.attributes.mediaUrl}
+					{...props.attributes}
 				/>
 
 				{/* Hero title */}
@@ -185,13 +192,22 @@ registerBlockType( 'pavelcorp/hero-block', {
 		const blockClass = `Block-Hero`;
 		const reversedClass = `Block-Hero--Reverse`;
 		const className = props.attributes.reversed ? `${blockClass} ${reversedClass}` : `${blockClass}`;
+		
+		
+		console.log(props.attributes.base64)
+
 		return (
 			<div className={`${className}`}>
 				<div>
-					{
-						props.attributes && props.attributes.mediaUrl &&
-						<img src={props.attributes.mediaUrl} />
-					}
+					<div className={`Block-Hero__Img`}>
+						{
+							props.attributes && props.attributes.mediaUrl &&
+							<Image 
+								{...props.attributes}
+								alt={props.attributes.title} 
+							/>
+						}
+					</div>
 				</div>
 				<div>
 

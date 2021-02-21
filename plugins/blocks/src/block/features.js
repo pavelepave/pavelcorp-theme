@@ -10,13 +10,11 @@ import './editor.scss';
 import './style.scss';
 
 import Uploader from '../utils/media-upload';
+import Image from '../utils/image';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { RichText, PlainText } = wp.blockEditor;
-const { withSelect } = wp.data;
-
-console.log(wp.blockEditor)
+const { RichText } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -43,6 +41,14 @@ registerBlockType('pavelcorp/features-block', {
         title: '',
       }]
     },
+    title: {
+      type: 'string',
+      default: '',
+    },
+    content: {
+      type: 'string',
+      default: '',
+    }
   },
 
   // The "edit" property must be a valid function.
@@ -78,64 +84,106 @@ registerBlockType('pavelcorp/features-block', {
       props.setAttributes({features: oFeatures});
     }
 
+    /**
+     * Feature
+     */
+    const Feature = ({ feature, index, ...props}) => {
+      return (
+        <div className={`Back-Block-Feature`}>
+          <div>
+            <Uploader
+              {...props}
+              {...props.attributes.features[index].media}
+              onSelect={
+                (media, base64) => {
+                  setFeature(index, 'media', {
+                    mediaId: media.id,
+                    mediaUrl: media.url,
+                    media,
+                    base64
+                  });
+                }
+              }
+              onRemoveImg={
+                (evt) => {
+                  evt.preventDefault();
+                  setFeature(index, 'media', {
+                    mediaId: 0,
+                    mediaUrl: '',
+                    base64: null
+                  });
+                }
+              }
+            />
+            <RichText
+              tagName='h3'
+              placeholder={__('Title', 'pavelcorp')}
+              value={feature.title || ''}
+              onChange={
+                (val) => { setFeature(index, 'title', val) }
+              }
+            />
+            <RichText
+              tagName='p'
+              placeholder={__('Content', 'pavelcorp')}
+              value={feature.content || ''}
+              onChange={
+                (val) => { setFeature(index, 'content', val) }
+              }
+            />
+            <div>
+              <a
+                href="javascript:{}"
+                className={`Block-Remove`}
+                onClick={
+                  (evt) => {
+                    evt.preventDefault();
+                    removeFeature(index);
+                  }
+                }
+              >
+                {__('Remove', 'pavelcorp')}
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div>
+        <RichText
+          tagName='h3'
+          placeholder={__('Title', 'pavelcorp')}
+          value={props.attributes.title}
+          onChange={
+            (val) => {
+              props.setAttributes({title: val});
+            } 
+          }
+        />
+
+        <RichText
+          tagName='p'
+          placeholder={__('Content (otpional)', 'pavelcorp')}
+          value={props.attributes.content}
+          onChange={
+            (val) => {
+              props.setAttributes({content: val})
+            }
+          }
+        />
+
+        <h3>{__('Features', 'pavelcorp')}</h3>
         <div className={`Back-Block-Features`}>
           {
             props.attributes.features.map((feature, index) => (
-              <div key={index} className={`Back-Block-Feature`}>
-                
-                <Uploader
-                  {...props}
-                  {...props.attributes.features[index].media}
-                  onSelect={
-                    (media) => { 
-                      setFeature(index, 'media', {
-                        mediaId: media.id,
-                        mediaUrl: media.url
-                      });
-                    }
-                  }
-                  onRemoveImg={
-                    (evt) => {
-                      evt.preventDefault();
-                      setFeature(index, 'media', {
-                        mediaId: 0,
-                        mediaUrl: ''
-                      });
-                    }
-                  }
+              <div key={index}>
+                <Feature 
+                  {...props} 
+                  feature={feature}
+                  index={index} 
                 />
-                <RichText
-                  tagName='h3'
-                  placeholder={__('Title', 'pavelcorp')}
-                  value={feature.title || ''}
-                  onChange={
-                    (val) => {setFeature(index, 'title', val)}
-                  }
-                />
-                <RichText
-                  tagName='p'
-                  placeholder={__('Content', 'pavelcorp')}
-                  value={feature.content || ''}
-                  onChange={
-                    (val) => { setFeature(index, 'content', val) }
-                  }
-                />
-                <div>
-                  <a 
-                    href="javascript:{}"
-                    className={`Block-Remove`}
-                    onClick={
-                      (evt) => {
-                        evt.preventDefault();
-                        removeFeature(index);
-                      }
-                    }
-                  >
-                    {__('Remove', 'pavelcorp')}
-                  </a>
-                </div>
               </div>
             ))
           }
@@ -167,7 +215,10 @@ registerBlockType('pavelcorp/features-block', {
                 <li key={key}>
                   <div className={`Block-Feature`}>
                     <div className={`Block-Feature__Img`}>
-                      <img src={props.attributes.mediaUrl} alt={feature.title} />
+                      <Image
+                        {...feature.media}
+                        alt={feature.title} 
+                      />
                     </div>
                     <RichText.Content
                       tagName='h3'
@@ -187,3 +238,4 @@ registerBlockType('pavelcorp/features-block', {
     );
   },
 });
+

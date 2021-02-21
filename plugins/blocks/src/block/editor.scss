@@ -109,8 +109,16 @@ $gutter: 16px;
   
   > div {
     flex: 1 1 auto;
-    min-width: 50%;
     padding-left: $gutter;
+    margin-bottom: 32px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .Back-Block-Features > div {
+    width: 50%;
+    max-width: 50%;
   }
 }
 
@@ -118,12 +126,43 @@ $gutter: 16px;
   .Block-ResponsiveImg{
     width: 140px;
     height: 140px;
+    
+    border: 1px solid rgba(#eee, .8);
+    padding: 8px;
+    border-radius: 2px;
+
     img {
       object-fit: contain;
       object-position: 50% 50%;
 
       width: 100%;
       height: 100%;
+    }
+  }
+}
+
+.Back-Block-Feature {
+  border-radius: 2px;
+  padding: 16px;
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba(#007cba,.3);
+
+
+  transition: .4s box-shadow;
+  &:hover {
+    box-shadow: 6px 6px 0 var(--wp-admin-theme-color);
+  }
+  > div {
+
+    position: relative;
+    height: 100%;
+    padding-bottom: 40px + 16px;
+  
+    .Block-Remove {
+      position: absolute;
+      left: 0;
+      bottom: 0;
     }
   }
 }

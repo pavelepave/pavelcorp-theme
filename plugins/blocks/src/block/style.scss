@@ -4,8 +4,14 @@
  * CSS for both Frontend+Backend.
  */
 
+$medium: 825px;
 $gutter: 24px;
 
+.Block-Hero{
+  padding: 48px 0;
+}
+
+.Block-Features > ul,
 .Block-Hero {
   display: flex;
   flex-flow: row wrap;
@@ -14,13 +20,72 @@ $gutter: 24px;
   margin-left: -$gutter;
   width: calc(100% + #{$gutter});
 
+  > li,
   > div {
     flex: 1 1 auto;
-    width: 50%;
     padding-left: $gutter;
+    margin-bottom: 32px;
   }
 }
 
+
 .Block-Hero--Reverse {
   flex-flow: row-reverse wrap;
+}
+
+.Block-Hero__Img {
+  max-width: 100% * 10 / 12;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Block-Feature__Img {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  img {
+    max-width: 180px;
+  }
+}
+
+.Block-Feature__Img,
+.Block-Hero__Img {
+  img {
+    object-fit: contain;
+    object-position: 50% 50%;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: $medium) {
+
+  .Block-Hero{
+    padding: 80px 0;
+  }
+
+  .Block-Hero > div {
+    margin-bottom: 0;
+    &:first-child {
+      width: 100% * 5 / 12;
+      max-width: 100% * 5 / 12;;
+    }
+    &:last-child {
+      position: relative;
+      width: 50%;
+      max-width: 50%;
+      left: 100% * 1 / 12;
+    }
+  }
+
+  .Block-Hero__Img{
+    max-width: 100%;
+  }
+
+  .Block-Features > ul > li {
+    width: 33%;
+    max-width: 33%;
+  }
+
 }
