@@ -207,6 +207,21 @@ registerBlockType('pavelcorp/features-block', {
   save: function (props) {
     return (
       <div className={`Block-Features`}>
+
+        <div className={`Block-Features__Header`}>
+          <h2>
+            {props.attributes.title}
+          </h2>
+          {
+            props.attributes.content &&
+            <div>
+              <RichText.Content
+                value={props.attributes.content} 
+                tagName={`p`}/>
+            </div>
+          }
+        </div>
+
         <ul>
           {
             props.attributes.features.map((feature, key) => {

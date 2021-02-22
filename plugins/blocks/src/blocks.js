@@ -12,3 +12,4 @@
 
 import './block/hero.js';
 import './block/features.js';
+import './block/newsletter.js';

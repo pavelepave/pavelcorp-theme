@@ -10,7 +10,9 @@
  * CSS for both Frontend+Backend.
  */
 .Block-Hero {
-  padding: 48px 0; }
+  padding: 48px 0;
+  -ms-flex-align: center;
+      align-items: center; }
 
 .Block-Features > ul,
 .Block-Hero {
@@ -18,8 +20,6 @@
   display: flex;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-  -ms-flex-align: center;
-      align-items: center;
   margin-left: -24px;
   width: calc(100% + 24px); }
   .Block-Features > ul > li,
@@ -58,6 +58,31 @@
   width: 100%;
   height: 100%; }
 
+.Block-Features__Header {
+  text-align: center; }
+
+.Block-Newsletter {
+  margin: 40px auto;
+  border-radius: 16px;
+  background-color: azure;
+  padding: 48px 24px; }
+
+.Block-Newsletter h3 {
+  text-align: center; }
+
+.Block-Newsletter form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center; }
+  .Block-Newsletter form > div:first-child {
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto; }
+  .Block-Newsletter form > div:last-child {
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    padding-left: 24px; }
+
 @media screen and (min-width: 825px) {
   .Block-Hero {
     padding: 80px 0; }
@@ -71,8 +96,17 @@
       width: 50%;
       max-width: 50%;
       left: 8.33333%; }
+  .Block-Hero:not(.Block-Hero--Reverse) > div:last-child {
+    left: 8.33333%; }
+  .Block-Hero--Reverse > div:last-child {
+    left: -8.33333%; }
   .Block-Hero__Img {
     max-width: 100%; }
   .Block-Features > ul > li {
     width: 33%;
-    max-width: 33%; } }
+    max-width: 33%; }
+  .Block-Features__Header {
+    max-width: 66.66667%;
+    margin: 0 auto 40px; }
+  .Block-Newsletter {
+    max-width: 66.66667%; } }

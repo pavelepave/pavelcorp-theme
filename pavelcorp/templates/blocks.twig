@@ -1,0 +1,20 @@
+<style>
+.Page{padding: 120px 0;}
+.Page p {margin: 0 0 16px;}
+.Page h1 {text-align: center;}
+h1,h2,h3,h4,h5 {margin: 0 0 16px;}
+@media screen and (min-width: 768px){.Page{padding: 120px 0;}}
+</style>
+
+<div class="Page">
+  <div class="wrapper">
+
+    <h1 class="t1 SemiBold mb4">
+      {{- page.title -}}
+    </h1>
+
+    <div class="Page__Content">
+      {{- page.content -}}
+    </div>    
+  </div>
+</div>

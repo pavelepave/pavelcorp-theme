@@ -9,13 +9,13 @@ $gutter: 24px;
 
 .Block-Hero{
   padding: 48px 0;
+  align-items: center;
 }
 
 .Block-Features > ul,
 .Block-Hero {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
 
   margin-left: -$gutter;
   width: calc(100% + #{$gutter});
@@ -59,6 +59,35 @@ $gutter: 24px;
   }
 }
 
+.Block-Features__Header{
+  text-align: center;
+}
+
+.Block-Newsletter{
+  margin: 40px auto;
+
+  border-radius: 16px;
+  background-color: azure;
+  padding: $gutter * 2 $gutter;
+}
+
+.Block-Newsletter h3 {
+  text-align: center;
+}
+
+.Block-Newsletter form {
+  display: flex;
+  align-items: center;
+
+  > div:first-child {
+    flex: 1 1 auto;
+  }
+  > div:last-child{
+    flex: 0 0 auto;
+    padding-left: $gutter;
+  }
+}
+
 @media screen and (min-width: $medium) {
 
   .Block-Hero{
@@ -79,6 +108,14 @@ $gutter: 24px;
     }
   }
 
+  .Block-Hero:not(.Block-Hero--Reverse) > div:last-child{
+    left: 100% * 1 / 12;
+  }
+
+  .Block-Hero--Reverse > div:last-child{
+    left: -100% * 1 / 12;
+  }
+
   .Block-Hero__Img{
     max-width: 100%;
   }
@@ -86,6 +123,15 @@ $gutter: 24px;
   .Block-Features > ul > li {
     width: 33%;
     max-width: 33%;
+  }
+
+  .Block-Features__Header {
+    max-width: 100% * 8 / 12;
+    margin: 0 auto 40px;
+  }
+
+  .Block-Newsletter{
+    max-width: 100% * 8 / 12;
   }
 
 }

@@ -52,3 +52,45 @@
   .navbar-open .hmbg span:nth-child(3) {
     transform: rotate(-45deg) translate(0, -7px); }
 
+body, p, .p0 {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Roboto, Helvetica;
+  font-weight: 300; }
+
+.t1, h1 {
+  font-size: 56px;
+  line-height: 52px; }
+
+.t2, h2 {
+  font-size: 40px;
+  line-height: 48px; }
+
+.t3, h3, .t4, h4 {
+  font-size: 24px;
+  line-height: 32px; }
+
+.Btn {
+  font-size: 16px;
+  line-height: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  color: #000;
+  border-radius: 2px;
+  border: 1px solid #000;
+  padding: 0 20px; }
+  .Btn:hover {
+    color: #fff;
+    background-color: #000; }
+
+.Input {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 0 16px;
+  width: 100%; }
+

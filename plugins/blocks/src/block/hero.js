@@ -79,53 +79,6 @@ registerBlockType( 'pavelcorp/hero-block', {
 	// The "edit" property must be a valid function.
 	edit: (props) => {
 
-		/**
-		 * Update URL on input change
-		 * @param {string} url 
-		 */
-		const onSelectUrl = function (url) {
-			props.setAttributes({ url: url })
-		}
-
-		/**
-		 * Set content
-		 * @param {Object} props Props.
-		 */
-		function setRichText(props) {
-			return (val) => {
-				props.setAttributes( {richText: val} )
-			}
-		}
-
-		/**
-		 * Set button text
-		 * @param {Object} props Props.
-		 */
-		function setCtaText(props) {
-			return (val) => {
-				props.setAttributes( {ctaText: val} )
-			}
-		}
-
-		/**
-		 * Set title
-		 * @param {Object} props Props.
-		 */
-		function setTitle(props) {
-			return (val) => {
-				props.setAttributes({ title: val })
-			}
-		}
-
-		/**
-		 * Set checkbox
-		 */
-		function setReverse(props) {
-			return (evt) => {
-				props.setAttributes({ reversed: evt.target.checked})
-			}
-		}
-
 		return (
 			<div>
 				<Uploader 
@@ -138,8 +91,12 @@ registerBlockType( 'pavelcorp/hero-block', {
 					tagName='h2'
 					label='Title'
 					value={props.attributes.title}
-					onChange={setTitle(props)}
 					placeholder={__('Title', 'pavelcorp')}
+					onChange={
+						(title) => {
+							props.setAttributes({ title });
+						} 
+					}
 				/>
 
 				{/* Hero content */}
@@ -147,9 +104,13 @@ registerBlockType( 'pavelcorp/hero-block', {
 					tagName='p'
 					label='Content'
 					value={props.attributes.richText}
-					onChange={setRichText(props)}
 					placeholder={__('Content', 'pavelcorp')}
 					style={{ margin: `0 0 24px` }}
+					onChange={
+						(richText) => {
+							props.setAttributes({ richText });
+						}
+					}
 				/>
 
 				{/* Hero button text */}
@@ -157,15 +118,26 @@ registerBlockType( 'pavelcorp/hero-block', {
 					tagName='a'
 					label='Button'
 					href={props.attributes.url ? props.attributes.url : ''}
-					className="components-button is-primary"
+					className={`components-button is-primary`}
 					value={props.attributes.ctaText}
-					onChange={setCtaText(props)}
 					placeholder={__('Button text', 'pavelcorp')}
 					style={{ margin: `0 0 16px` }}
+					onChange={
+						(ctaText) => {
+							props.setAttributes({ ctaText });
+						}
+					}
 				/>
 
 				{/* Hero link */}
-				<URLInput value={props.attributes.url} onChange={onSelectUrl} />
+				<URLInput 
+					value={props.attributes.url} 
+					onChange={
+						(url) => {
+							props.setAttributes({ url });
+						}
+					} 
+				/>
 
 				{/* Reverse ? */}
 				{__('Regular', 'pavelcorp')}
@@ -178,7 +150,11 @@ registerBlockType( 'pavelcorp/hero-block', {
 						type="checkbox" 
 						checked={props.attributes.reversed} 
 						name="reversed" 
-						onChange={setReverse(props)}
+						onChange={
+							(evt) => {
+								props.setAttributes({ reversed: evt.target.checked })
+							}
+						}
 					/>
 					<span aria-hidden="true"/>
 				</label>
@@ -192,9 +168,6 @@ registerBlockType( 'pavelcorp/hero-block', {
 		const blockClass = `Block-Hero`;
 		const reversedClass = `Block-Hero--Reverse`;
 		const className = props.attributes.reversed ? `${blockClass} ${reversedClass}` : `${blockClass}`;
-		
-		
-		console.log(props.attributes.base64)
 
 		return (
 			<div className={`${className}`}>
@@ -214,7 +187,6 @@ registerBlockType( 'pavelcorp/hero-block', {
 					<RichText.Content
 						tagName='h2'
 						label='Title'
-						className="title title--h2"
 						value={props.attributes.title}
 					/>
 
@@ -223,12 +195,12 @@ registerBlockType( 'pavelcorp/hero-block', {
 						label='Content'
 						value={props.attributes.richText}
 					/>
-					<div className={`Right`}>
+					<div>
 						<RichText.Content
 							tagName='a'
 							label='Button'
 							href={props.attributes.url ? props.attributes.url : ''}
-							className="components-button is-primary button button--blue"
+							className={`Btn`}
 							value={props.attributes.ctaText}
 						/>
 					</div>
