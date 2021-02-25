@@ -25,7 +25,7 @@ class CardMeta extends Meta
     $editor_settings = array(
       'wpautop' => true,
       'media_buttons' => false,
-      'textarea_name' => $this->name . '[]',
+      'textarea_name' => $this->name . '[content]',
       'textarea_rows' => 10,
       'teeny' => true
     );

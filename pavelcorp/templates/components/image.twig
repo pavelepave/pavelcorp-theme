@@ -8,16 +8,22 @@
 {%- if img.post_mime_type == "image/svg+xml" -%}
 	<img src="{{- img.src -}}" alt="{{- img_alt -}}"/>
 {%- else -%}
-	<img {% if img | base64img -%} src="data:{{ img.post_mime_type }};base64,{{img | base64img}}" {% else -%} src="{{- img.src -}}" {% endif -%} 
-  alt="{{- img_alt -}}" 
-  {%- if sizes -%} sizes="{{- sizes -}}" {%- endif -%} 
-  srcset="
-    {{- img.src }} {{ img.width -}}w,
-    {%-if img.src('xl') != img.src -%}{{- img.src('xl') }} 1220w,{%- endif -%}
-    {%-if img.src('lg') != img.src -%}{{- img.src('lg') }} 850w,{%- endif -%}
-    {%-if img.src('md') != img.src -%}{{- img.src('md') }} 650w,{%- endif -%}
-    {%-if img.src('sm') != img.src -%}{{- img.src('sm') }} 420w,{%- endif -%}
-    {{- img.src('xs') }} 120w
-  "/>
+	<img 
+    {% if img | base64img -%} 
+    src="data:{{ img.post_mime_type }};base64,{{img | base64img}}" 
+    {% else -%} 
+    src="{{- img.src -}}" 
+    {% endif -%} 
+    alt="{{- img_alt -}}" 
+    {%- if sizes -%} sizes="{{- sizes -}}" {%- endif -%} 
+    srcset="
+      {{- img.src }} {{ img.width -}}w,
+      {%-if img.src('xl') != img.src -%}{{- img.src('xl') }} 1220w,{%- endif -%}
+      {%-if img.src('lg') != img.src -%}{{- img.src('lg') }} 850w,{%- endif -%}
+      {%-if img.src('md') != img.src -%}{{- img.src('md') }} 650w,{%- endif -%}
+      {%-if img.src('sm') != img.src -%}{{- img.src('sm') }} 420w,{%- endif -%}
+      {{- img.src('xs') }} 120w
+    "
+  />
 {%- endif -%}
 
