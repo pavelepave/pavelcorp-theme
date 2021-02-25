@@ -232,7 +232,7 @@ function pavelcorp_script_loader_tag( $tag, $handle, $src ) {
       'wp-embed' === $handle ||
       'wp-i18n' === $handle
     ) {
-      $tag = '<script type="text/javascript" src="' . esc_url( $src ) . '" async></script>';
+      $tag = '<script type="text/javascript" src="' . esc_url( $src ) . '" async defer></script>';
     }
   }
   return $tag;
@@ -247,3 +247,42 @@ function pavelcorp_remove_quick_edit($actions) {
   unset($actions['inline hide-if-no-js']);
   return $actions;
 }
+
+/**
+ * Defer css
+ */
+function pavelcorp_add_rel_preload($html, $handle, $href, $media) {
+  if (is_admin()) return $html;
+  $html = "<link rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\" id=\"$handle\" href=\"$href\" type=\"text/css\" media=\"all\" />";
+  return $html;
+}
+
+add_filter( 'style_loader_tag', 'pavelcorp_add_rel_preload', 10, 4 );
+
+/**
+ * disable useless scripts
+ */
+function pavelcorp_disable_useless_scripts(){
+  if ( !is_admin() ){
+    wp_dequeue_script( 'wp-embed');
+    wp_deregister_script( 'wp-embed');
+  }
+}
+
+// Remove useless scripts from all pages (front)
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+add_action('wp_print_scripts', 'pavelcorp_disable_useless_scripts', 11);
+
+
+/**
+ * disable wp-i18n script
+ */
+function pavelcorp_disable_i18n(){
+  if ( !is_admin() ){
+    wp_dequeue_script( 'wp-i18n');
+    wp_deregister_script( 'wp-i18n');
+  }
+}
+// Disable for all pages
+// add_action('wp_print_scripts', 'pavelcorp_disable_i18n', 11);
