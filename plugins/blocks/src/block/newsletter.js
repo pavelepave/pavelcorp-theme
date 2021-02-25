@@ -11,7 +11,7 @@ import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { RichText, URLInput } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -38,9 +38,8 @@ registerBlockType('pavelcorp/newsletter-block', {
       selector: 'h3'
     },
     ctaText: {
-      type: 'array',
-      source: 'children',
-      selector: 'a'
+      type: 'string',
+      default: ''
     },
   },
 
@@ -67,7 +66,6 @@ registerBlockType('pavelcorp/newsletter-block', {
         <RichText
           tagName='a'
           label='Button'
-          href={props.attributes.url ? props.attributes.url : ''}
           className={`components-button is-primary`}
           value={props.attributes.ctaText}
           placeholder={__('Button text', 'pavelcorp')}

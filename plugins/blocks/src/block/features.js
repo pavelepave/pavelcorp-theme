@@ -39,6 +39,7 @@ registerBlockType('pavelcorp/features-block', {
       type: 'array',
       default: [{
         title: '',
+        content: ''
       }]
     },
     title: {
@@ -70,8 +71,8 @@ registerBlockType('pavelcorp/features-block', {
         if (!oFeatures[index]) oFeatures[index] = {};
         oFeatures[index][key] = val;
       }
-      
-      props.setAttributes({ features: oFeatures });
+
+      props.setAttributes({ features: oFeatures, isFocused: {index,key} });
     }
 
     /**
@@ -88,6 +89,7 @@ registerBlockType('pavelcorp/features-block', {
      * Feature
      */
     const Feature = ({ feature, index, ...props}) => {
+      const isFocused = props.attributes.isFocused ? props.attributes.isFocused : {};
       return (
         <div className={`Back-Block-Feature`}>
           <div>
@@ -118,7 +120,8 @@ registerBlockType('pavelcorp/features-block', {
             <RichText
               tagName='h3'
               placeholder={__('Title', 'pavelcorp')}
-              value={feature.title || ''}
+              value={feature.title}
+              isSelected={isFocused.key === 'title' && isFocused.index === index}
               onChange={
                 (val) => { setFeature(index, 'title', val) }
               }
@@ -126,7 +129,8 @@ registerBlockType('pavelcorp/features-block', {
             <RichText
               tagName='p'
               placeholder={__('Content', 'pavelcorp')}
-              value={feature.content || ''}
+              value={feature.content}
+              isSelected={isFocused.key === 'content' && isFocused.index === index}
               onChange={
                 (val) => { setFeature(index, 'content', val) }
               }
@@ -153,7 +157,7 @@ registerBlockType('pavelcorp/features-block', {
     return (
       <div>
         <RichText
-          tagName='h3'
+          tagName='h2'
           placeholder={__('Title', 'pavelcorp')}
           value={props.attributes.title}
           onChange={
@@ -177,15 +181,17 @@ registerBlockType('pavelcorp/features-block', {
         <h3>{__('Features', 'pavelcorp')}</h3>
         <div className={`Back-Block-Features`}>
           {
-            props.attributes.features.map((feature, index) => (
-              <div key={index}>
-                <Feature 
-                  {...props} 
-                  feature={feature}
-                  index={index} 
-                />
-              </div>
-            ))
+            props.attributes.features.map((feature, index) => {
+              return (
+                <div key={index}>
+                  <Feature
+                    {...props}
+                    feature={feature}
+                    index={index}
+                  />
+                </div>
+              )
+            })
           }
 
         </div>
