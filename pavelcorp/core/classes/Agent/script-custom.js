@@ -196,7 +196,7 @@ jQuery(document).ready(function ($) {
 		switch (type) {
 			case 'image':
 				var container = document.createElement('div');
-				container.classList = 'single-preview';
+				container.classList = 'single-preview preview-zone';
 				container.dataset.info = JSON.stringify({ name: name });
 
 				var button = document.createElement('input');
